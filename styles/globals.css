@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "react-slideshow-image/dist/styles.css";
+@font-face {
+  font-family: "Caudex";
+  src: url('/font/Caudex.ttf');
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Caudex, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.ant-btn{
+  height: auto!important;
+}
+
+.ant-input-search-button{
+  height: 32px!important;
+}
+
+/* scroll bar */
+/* ::-webkit-scrollbar {
+  width: auto;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+  } 
+
+::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px grey;
+} */
+

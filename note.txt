@@ -1,0 +1,242 @@
+assessment report sort by completion date
+
+forgot password msg
+register corporate msg
+
+edit profile - upload ssm (done)
+upload company profile (done)
+
+contact us email
+add autorized user
+
+position (done)
+
+summary spacing (done)
+learning module (done)
+show indicator (done)
+
+access detail numbering (done)
+remove assessment share
+
+phase2 reset password
+
+remove add authorized user (done)
+esg level text bigger (done)
+learning resource arrange ascending (done)
+title clean up (done)
+learning resource search remove (done)
+view report error
+access detail (done)
+report download icon (done)
+admin sme dashboard remove msic column (done)
+placeholder excel (done)
+
+pdf company detail
+download slow
+
+
+portfolio new search industry (done)
+test report industry longest (done)
+
+validity date minus one day (done)
+pop up messsage
+login failed msg
+view details order (done)
+
+Unverified cannot submit
+Assessment: Allow user to proceed answer to next dimension without completing current dimension question (done)
+Server error happen a lot especially on questionnaire and report page
+
+add additional users (done)
+corporate register (done)
+subscription
+portfolio report
+Also, we notice on mobile it look better now, but can we request for
+1. When system detect user use mobile, display a message "For better view, please use desktop"
+
+portfolio chart sort
+
+xx contract type
+xxxx last 4 ssm number
+xxxxxx ddmmyy
+
+admin/self can change password
+
+sme report graph title
+graph font family
+
+edit subscription
+subscription modal
+existing if pending empty
+
+pie color
+pie donut overlap
+corporate dashboard portfolio report check no of report
+
+search trim end
+
+learning resource - pick from 2 lowest
+subscription fixed single + 1 year
+learning resource dashboard - 4 dimension
+
+Register -> sign up x
+button size smaller x
+button color x
+
+message lower x
+single entity cannot view others report x
+single business x
+
+radar chart align
+more learning resource x
+
+other smes -> other companies x
+
+upload file name green color x
+entire note green color x
+
+questionnaire empty allow submit x
+
+cp -Rf /home/ubuntu/sme/* /var/www/access/
+cd /var/www/access
+npm install
+npm run build
+pm2 delete access
+sh run.sh
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Welcome to ACCESS Digital!
+
+<p><span style='font-size:16px;line-height:normal;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Thank you for signing up, {title} {firstname} {lastname},</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><span style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>You&rsquo;re now part of a growing business community who is preparing their company for sustainable changes and the race to stop the planet&rsquo;s temperature from rising in 2030.</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><span style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>We built ACCESS Digital because we wanted to create a trustworthy and localised ESG platform to help you&nbsp;</span><span style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>respond to your sustainability management challenges and prepare for a transition to the new economy.</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>To help you get started, we&rsquo;re here to show you how to use ACCESS Digital with these 3 simple tips:</p>
+<ol>
+    <li>
+        <div>
+            <p style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Take your ESG Assessment</p>
+            <p style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Answer the 40 Yes-No questionnaire and upload supporting documents (e.g. ISO certifications).</p>
+        </div>
+    </li>
+    <li>
+        <div>
+            <p style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>View your ESG Report</p>
+            <p style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Evaluate your ESG performance in comparison with peers.&nbsp;</p>
+        </div>
+    </li>
+    <li>
+        <div>
+            <p style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Share your ESG Report</p>
+            <p style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Decide if you want to share your ESG results and collaborate with your preferred supply chain owners and corporates.</p>
+        </div>
+    </li>
+</ol>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><span style='font-size:16px;line-height:115%;font-family:"Calibri Light",sans-serif;color:#0C0F33;'><a href="https://accessdigital.my/sme">Embark on your ESG discovery journey now!</a></span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><span style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Please reply to this email if you still have questions. We hope you have a productive experience with us!</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='margin:0in;margin-bottom:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;background:white;'><span style='font-size:16px;line-height:115%;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Best regards,</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'><span style='font-size:16px;line-height:115%;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>SDM Team</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Thank you for your interest in ACCESS Digital. We’ll be in touch.
+
+<p><span style='font-size:16px;line-height:normal;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Dear, {title} {firstname} {lastname},</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><span style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Thank you for your interest to be part of a growing business community who believes in the enormity of clean supply chain in their corporate sustainability journey.</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><span style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>We will reach out within three working days to guide you through the subscription process for ACCESS Digital.</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Meanwhile, here are some case study links which will offer a healthy dose of inspiration for your sustainability journey:</p>
+<ul>
+    <li>
+        <div>
+            <p style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'><a href="https://www.weforum.org/agenda/2020/09/4-ways-companies-take-effective-climate-action/">4 Ways for Companies to Take Effective Climate Action</a></p>
+        </div>
+    </li>
+    <li>
+        <div>
+            <p style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'><a href="https://www.nasdaq.com/articles/strong-esg-practices-can-benefit-companies-and-investors-2019-03-13">Strong ESG Practices Can Benefit Companies and Investors: Here&rsquo;s How</a></p>
+        </div>
+    </li>
+    <li>
+        <div>
+            <p style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'><a href="https://www.mckinsey.com/business-functions/sustainability/our-insights/starting-at-the-source-sustainability-in-supply-chains">Starting at the Source: Sustainability in Supply Chains</a></p>
+        </div>
+    </li>
+</ul>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><span style='font-size:16px;line-height:115%;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>More and more companies are under immense pressure to improve their transparency and sustainability practices, including the sustainability of their suppliers. Built on trusted frameworks which are aligned with international standards, ACCESS Digital gives companies the ability to:</span></p>
+<ol>
+    <li>
+        <div>
+            <p style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Build connections with your suppliers and assess their ESG maturity levels.</p>
+        </div>
+    </li>
+    <li>
+        <div>
+            <p style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Receive a consolidated ESG report of your suppliers.</p>
+        </div>
+    </li>
+    <li>
+        <div>
+            <p style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Monitor your ESG portfolio performance over time to screen supply chain risks and opportunities to improve the overall performance of your supply ecosystem.</p>
+        </div>
+    </li>
+</ol>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><span style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>We would love to get your feedback and suggestions on how we could improve our ESG platform. Just reply to this email anytime.</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='margin:0in;margin-bottom:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;background:white;'><span style='font-size:16px;line-height:115%;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Best regards,</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'><span style='font-size:16px;line-height:115%;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>SDM Team</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Congratulations on becoming a member of the ACCESS Digital family! Here are your login credentials.
+
+<p><span style='font-size:16px;line-height:normal;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Dear, {title} {firstname} {lastname},</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><span style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Thank you for choosing to be part of a growing business community on ACCESS Digital who is preparing their company for sustainable changes and the race to stop the planet&rsquo;s temperature from rising in 2030.</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><span style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>We are thrilled to have you on board and look forward to serving you for the years to come!</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>As a subscriber, you will have the ability to:</p>
+<ol>
+    <li>
+        <div>
+            <p style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Build connections with your suppliers and assess their ESG maturity levels.</p>
+        </div>
+    </li>
+    <li>
+        <div>
+            <p style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Receive a consolidated ESG report of your suppliers.</p>
+        </div>
+    </li>
+    <li>
+        <div>
+            <p style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Monitor your ESG portfolio performance over time to screen supply chain risks and opportunities to improve the overall performance of your supply ecosystem.</p>
+        </div>
+    </li>
+</ol>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><span style='font-size:16px;line-height:115%;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Without further ado, here are your login credentials to get started instantly.</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><span style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Email ID:	&emsp;xxx@xxx</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><span style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Temporary Password: &emsp;xxxxxx</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><span style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Please remember to change your temporary password after you have logged-in.</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><span style='font-size:16px;line-height:115%;font-family:"Calibri Light",sans-serif;color:#0C0F33;'><a href="https://accessdigital.my/corporate">Embark on your ESG discovery journey now!</a></span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><span style='font-size:16px;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>If you have any questions, comments or concerns, don&rsquo;t hesitate to reach out by replying to this email.</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
+<p style='margin:0in;margin-bottom:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;background:white;'><span style='font-size:16px;line-height:115%;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>Best regards,</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'><span style='font-size:16px;line-height:115%;font-family:"Calibri Light",sans-serif;color:#0C0F33;'>SDM Team</span></p>
+<p style='margin:0in;margin-bottom:0in;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;background:white;'><br></p>
