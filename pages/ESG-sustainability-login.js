@@ -10,7 +10,8 @@ const { Content } = Layout;
 function HomePage() {
   const router = useRouter();
   const [loginForm] = Form.useForm();
-  const [ForgotPasswordModalVisible, setForgotPasswordModalVisible] = useState(false);
+  const [ForgotPasswordModalVisible, setForgotPasswordModalVisible] =
+    useState(false);
 
   const sendLogin = (values) => {
     let data = {
@@ -25,7 +26,7 @@ function HomePage() {
           content: "You have signed in successfully.",
           style: {
             fontSize: "20px",
-            marginTop: "100px"
+            marginTop: "100px",
           },
           duration: 5,
         });
@@ -41,25 +42,28 @@ function HomePage() {
                     content: "Your account is not active.",
                     style: {
                       fontSize: "20px",
-                      marginTop: "100px"
+                      marginTop: "100px",
                     },
                     duration: 8,
                   });
-                } else if (err.response.data.error.code.includes("user_not_found")) {
+                } else if (
+                  err.response.data.error.code.includes("user_not_found")
+                ) {
                   message.error({
                     content: "Your email has not been registered.",
                     style: {
                       fontSize: "20px",
-                      marginTop: "100px"
+                      marginTop: "100px",
                     },
                     duration: 8,
                   });
                 } else {
                   message.error({
-                    content: "You have entered your email or password incorrectly. Passwords are case sensitive, so ensure your 'Caps Lock' key is not enabled.",
+                    content:
+                      "You have entered your email or password incorrectly. Passwords are case sensitive, so ensure your 'Caps Lock' key is not enabled.",
                     style: {
                       fontSize: "20px",
-                      marginTop: "100px"
+                      marginTop: "100px",
                     },
                     duration: 8,
                   });
@@ -78,7 +82,7 @@ function HomePage() {
                 content: "You have signed in successfully.",
                 style: {
                   fontSize: "20px",
-                  marginTop: "100px"
+                  marginTop: "100px",
                 },
                 duration: 5,
               });
@@ -86,10 +90,11 @@ function HomePage() {
             })
             .catch(() => {
               message.error({
-                content: "You have entered your email or password incorrectly. Passwords are case sensitive, so ensure your 'Caps Lock' key is not enabled.",
+                content:
+                  "You have entered your email or password incorrectly. Passwords are case sensitive, so ensure your 'Caps Lock' key is not enabled.",
                 style: {
                   fontSize: "20px",
-                  marginTop: "100px"
+                  marginTop: "100px",
                 },
                 duration: 8,
               });
@@ -102,7 +107,9 @@ function HomePage() {
     return (
       <div className="mx-[25%] mt-[5%] border-2 shadow-xl p-8">
         <div className="text-[#38273A]">
-          <p className="font-bold text-2xl text-center">Welcome to Centre for Sustainability Intelligence Platform</p>
+          <p className="font-bold text-2xl text-center">
+            Welcome to Centre for Sustainability Intelligence Platform
+          </p>
         </div>
         <div className="py-8 px-8">
           <Form layout="vertical" onFinish={sendLogin} form={loginForm}>
@@ -124,7 +131,9 @@ function HomePage() {
               <Input maxLength={100} />
             </Form.Item>
             <Form.Item
-              label={<p className="font-semibold">Please enter your password</p>}
+              label={
+                <p className="font-semibold">Please enter your password</p>
+              }
               name="password"
               hasFeedback
               rules={[
@@ -135,8 +144,18 @@ function HomePage() {
                 {
                   validator(_, value) {
                     if (value) {
-                      if (value.length < 8 || value.length > 12 || !/[A-Z]/.test(value) || !/[0-9]/.test(value) || !/[a-z]/.test(value)) {
-                        return Promise.reject(new Error("Password must contain 8 to 12 characters with at least 1 uppercase letter, lowercase letter and 1 number"));
+                      if (
+                        value.length < 8 ||
+                        value.length > 12 ||
+                        !/[A-Z]/.test(value) ||
+                        !/[0-9]/.test(value) ||
+                        !/[a-z]/.test(value)
+                      ) {
+                        return Promise.reject(
+                          new Error(
+                            "Password must contain 8 to 12 characters with at least 1 uppercase letter, lowercase letter and 1 number"
+                          )
+                        );
                       }
                     }
                     return Promise.resolve();
@@ -151,7 +170,10 @@ function HomePage() {
             </Form.Item>
             <Form.Item className="mb-2">
               <div className="text-center">
-                <Button htmlType="submit" className="w-[30%] py-2 bg-assessmentNext text-white hover:bg-assessmentNext focus:bg-assessmentNext hover:text-white focus:text-white">
+                <Button
+                  htmlType="submit"
+                  className="w-[30%] py-2 bg-assessmentNext text-white hover:bg-assessmentNext focus:bg-assessmentNext hover:text-white focus:text-white"
+                >
                   Login
                 </Button>
               </div>
@@ -187,10 +209,19 @@ function HomePage() {
 
   const ForgotPassword = () => {
     return (
-      <Modal visible={ForgotPasswordModalVisible} footer={null} closable={false} onCancel={() => setForgotPasswordModalVisible(false)} className="mt-60">
+      <Modal
+        visible={ForgotPasswordModalVisible}
+        footer={null}
+        closable={false}
+        onCancel={() => setForgotPasswordModalVisible(false)}
+        className="mt-60"
+      >
         <p className="text-formTitleGreen font-semibold py-6 text-lg">
           If you have forgotten your password and need to reset, please email{" "}
-          <a href="mailto:enquiry@sdmsb.com" className="underline hover:underline focus:underline text-blue-500">
+          <a
+            href="mailto:enquiry@sdmsb.com"
+            className="underline hover:underline focus:underline text-blue-500"
+          >
             support@csi-asean.com
           </a>
           .

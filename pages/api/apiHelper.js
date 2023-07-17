@@ -5,9 +5,7 @@ const defaultHeaders = {
   "Content-Type": "application/json",
 };
 
-// const API_URL = "http://localhost:5000/api/";
-const API_URL = "http://localhost:5000/api/";
-// const API_URL = "https://accessdigital.my/api/";
+const API_URL = "https://csiesg-api.azurewebsites.net/api/";
 
 let isAPIFailed = true;
 let errorCode = "";
@@ -16,7 +14,14 @@ const fetching = (url, method, body, customHeaders) => {
   let authHeaders = {};
   let isRemember = localStorage.getItem("remember");
   let token = sessionStorage.getItem("accessToken");
-  if (!url.includes("login") && !url.includes("register") && !url.includes("smeRegister") && !url.includes("corporateRegister") && !url.includes("contactUs") && !url.includes("smeSubscription")) {
+  if (
+    !url.includes("login") &&
+    !url.includes("register") &&
+    !url.includes("smeRegister") &&
+    !url.includes("corporateRegister") &&
+    !url.includes("contactUs") &&
+    !url.includes("smeSubscription")
+  ) {
     if (token !== undefined && token !== null) {
       authHeaders = {
         Authorization: "Bearer " + token,
@@ -82,7 +87,9 @@ const promptError = (errorMessage) => {
 };
 
 const redirectToHomePage = (errorCode) => {
-  promptError("The server encountered a temporary error. Please try again in 30 seconds.");
+  promptError(
+    "The server encountered a temporary error. Please try again in 30 seconds."
+  );
   window.location.replace("/404/" + errorCode);
 };
 const redirectToLogin = (errorMessage) => {
@@ -112,11 +119,16 @@ const fetchAPI = (config) => {
   });
 };
 
-const GET = (uri, body, customHeaders) => fetching(uri, "GET", body, customHeaders);
-const POST = (uri, body, customHeaders) => fetching(uri, "POST", body, customHeaders);
-const PATCH = (uri, body, customHeaders) => fetching(uri, "PATCH", body, customHeaders);
-const PUT = (uri, body, customHeaders) => fetching(uri, "PUT", body, customHeaders);
-const DELETE = (uri, body, customHeaders) => fetching(uri, "DELETE", body, customHeaders);
+const GET = (uri, body, customHeaders) =>
+  fetching(uri, "GET", body, customHeaders);
+const POST = (uri, body, customHeaders) =>
+  fetching(uri, "POST", body, customHeaders);
+const PATCH = (uri, body, customHeaders) =>
+  fetching(uri, "PATCH", body, customHeaders);
+const PUT = (uri, body, customHeaders) =>
+  fetching(uri, "PUT", body, customHeaders);
+const DELETE = (uri, body, customHeaders) =>
+  fetching(uri, "DELETE", body, customHeaders);
 
 export default {
   GET,

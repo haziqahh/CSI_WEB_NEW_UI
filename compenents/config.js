@@ -11,10 +11,9 @@
 // export const PORTFOLIOREPORTURL = "http://211.24.43.170/pdf";
 // export const PORTFOLIOREPORTURL = "http://localhost:9711/pdf"
 
-export const WEBURL = "http://211.24.43.170";
-export const REPORTURL = "http://211.24.43.170/pdf";
-export const PORTFOLIOREPORTURL = "http://211.24.43.170/pdf";
-
+export const WEBURL = "https://csiesgapp.azurewebsites.net/";
+export const REPORTURL = "https://csiesgapp.azurewebsites.net/pdf";
+export const PORTFOLIOREPORTURL = "https://csiesgapp.azurewebsites.net/pdf";
 
 export const MSIC = [
   {
@@ -26,14 +25,18 @@ export const MSIC = [
   {
     sector: "Services",
     code: "E 36-39",
-    industry: "Water supply; sewerage, waste management and remediation activities",
-    industryShort: "Water supply; sewerage, waste management and remediation activities",
+    industry:
+      "Water supply; sewerage, waste management and remediation activities",
+    industryShort:
+      "Water supply; sewerage, waste management and remediation activities",
   },
   {
     sector: "Services",
     code: "G 45",
-    industry: "Wholesale & retail trade and repair of motor vehicles & motorcycles",
-    industryShort: "Wholesale & retail trade and repair of motor vehicles & motorcycles",
+    industry:
+      "Wholesale & retail trade and repair of motor vehicles & motorcycles",
+    industryShort:
+      "Wholesale & retail trade and repair of motor vehicles & motorcycles",
   },
   {
     sector: "Services",
@@ -50,7 +53,8 @@ export const MSIC = [
   {
     sector: "Services",
     code: "H 49-53",
-    industry: "Transportation and storage (incl. land, water & air transport; warehousing and postal / courier activities)",
+    industry:
+      "Transportation and storage (incl. land, water & air transport; warehousing and postal / courier activities)",
     industryShort: "Transportation and storage",
   },
   {
@@ -62,7 +66,8 @@ export const MSIC = [
   {
     sector: "Services",
     code: "J 58-63",
-    industry: "Information and communication (incl. publishing activities; production of video & tv programme production; sound recording; broadcasting; telecommunications; computer programming and information service activities)",
+    industry:
+      "Information and communication (incl. publishing activities; production of video & tv programme production; sound recording; broadcasting; telecommunications; computer programming and information service activities)",
     industryShort: "Information and communication",
   },
   {
@@ -80,20 +85,23 @@ export const MSIC = [
   {
     sector: "Services",
     code: "M 69-75",
-    industry: "Professional, scientific & technical activities (incl. legal & accounting; architectural & engineering; veterinary activities; scientific R&D; advertising & market research and activities of head offices; management consultancy activities)",
+    industry:
+      "Professional, scientific & technical activities (incl. legal & accounting; architectural & engineering; veterinary activities; scientific R&D; advertising & market research and activities of head offices; management consultancy activities)",
     industryShort: "Professional, scientific & technical activities",
   },
   {
     sector: "Services",
     code: "N 77-82",
-    industry: "Administrative and support service activities (incl. rental & leasing activities; employment activities; travel agency, tour operator; security & investigation; services to buildings & landscape; office administrative, office support and other business support activities)",
+    industry:
+      "Administrative and support service activities (incl. rental & leasing activities; employment activities; travel agency, tour operator; security & investigation; services to buildings & landscape; office administrative, office support and other business support activities)",
     industryShort: "Administrative and support service activities",
   },
   {
     sector: "Services",
     code: "O 84",
     industry: "Public administration and defence; compulsory social security",
-    industryShort: "Public administration and defence; compulsory social security",
+    industryShort:
+      "Public administration and defence; compulsory social security",
   },
   {
     sector: "Services",
@@ -104,19 +112,22 @@ export const MSIC = [
   {
     sector: "Services",
     code: "Q 86-88",
-    industry: "Human health and social work activities (incl. human health activities; residential care activities & social work without accommodation)",
+    industry:
+      "Human health and social work activities (incl. human health activities; residential care activities & social work without accommodation)",
     industryShort: "Human health and social work activities",
   },
   {
     sector: "Services",
     code: "R 90-93",
-    industry: "Arts, entertainment and recreation (incl. libraries, archives, museums and other cultural activities; gambling & betting; sports activities & amusement and recreation activities)",
+    industry:
+      "Arts, entertainment and recreation (incl. libraries, archives, museums and other cultural activities; gambling & betting; sports activities & amusement and recreation activities)",
     industryShort: "Arts, entertainment and recreation",
   },
   {
     sector: "Services",
     code: "S 94-96",
-    industry: "Other service activities (incl. activities of membership organisations, repair of computers & personal and household goods; other personal service activities like pet care, salon, sauna, laundry, vending machine etc.)",
+    industry:
+      "Other service activities (incl. activities of membership organisations, repair of computers & personal and household goods; other personal service activities like pet care, salon, sauna, laundry, vending machine etc.)",
     industryShort: "Other service activities",
   },
   {
@@ -158,7 +169,8 @@ export const MSIC = [
   {
     sector: "Manufacturing",
     code: "C 16",
-    industry: "Wood and products of wood and cork, except furniture; manufacture of articles of straw and plaiting materials",
+    industry:
+      "Wood and products of wood and cork, except furniture; manufacture of articles of straw and plaiting materials",
     industryShort: "Wood and products of wood and cork",
   },
   {
@@ -189,7 +201,8 @@ export const MSIC = [
     sector: "Manufacturing",
     code: "C 21",
     industry: "Basic pharmaceutical products and pharmaceutical preparations",
-    industryShort: "Basic pharmaceutical products and pharmaceutical preparations",
+    industryShort:
+      "Basic pharmaceutical products and pharmaceutical preparations",
   },
   {
     sector: "Manufacturing",
@@ -200,13 +213,15 @@ export const MSIC = [
   {
     sector: "Manufacturing",
     code: "C 23",
-    industry: "Other non-metallic mineral products e.g. glass and glass products, non-metallic mineral products n.e.c.",
+    industry:
+      "Other non-metallic mineral products e.g. glass and glass products, non-metallic mineral products n.e.c.",
     industryShort: "Other non-metallic mineral products",
   },
   {
     sector: "Manufacturing",
     code: "C 24",
-    industry: "Basic metals e.g. basic iron and steel, basic precious and other non-ferrous metals, casting of metals",
+    industry:
+      "Basic metals e.g. basic iron and steel, basic precious and other non-ferrous metals, casting of metals",
     industryShort: "Basic metals",
   },
   {
@@ -242,7 +257,8 @@ export const MSIC = [
   {
     sector: "Manufacturing",
     code: "C 30",
-    industry: "Other transport equipment e.g. building of ships & boats, railway locomotives & rolling stock, air & spacecraft and related machinery",
+    industry:
+      "Other transport equipment e.g. building of ships & boats, railway locomotives & rolling stock, air & spacecraft and related machinery",
     industryShort: "Other transport equipment",
   },
   {
@@ -254,7 +270,8 @@ export const MSIC = [
   {
     sector: "Manufacturing",
     code: "C 32",
-    industry: "Other manufacturing e.g. manufacture of jewellery, bijouterie, musical instruments, sports goods, games and toys, medical and dental instruments and supplies",
+    industry:
+      "Other manufacturing e.g. manufacture of jewellery, bijouterie, musical instruments, sports goods, games and toys, medical and dental instruments and supplies",
     industryShort: "Other manufacturing",
   },
   {
@@ -266,20 +283,24 @@ export const MSIC = [
   {
     sector: "Construction",
     code: "F 42",
-    industry: "Civil engineering e.g. construction of roads & railways, utility projects, other civil engineering projects",
+    industry:
+      "Civil engineering e.g. construction of roads & railways, utility projects, other civil engineering projects",
     industryShort: "Civil engineering",
   },
   {
     sector: "Construction",
     code: "F 43",
-    industry: "Specialised construction activities e.g. demolition & site preparation, electrical, plumbing and other construction installation activities, building completion & finishing",
+    industry:
+      "Specialised construction activities e.g. demolition & site preparation, electrical, plumbing and other construction installation activities, building completion & finishing",
     industryShort: "Specialised construction activities",
   },
   {
     sector: "Agriculture, forestry and fishing",
     code: "A 01",
-    industry: "Crops and animal production, hunting and related service activities",
-    industryShort: "Crops and animal production, hunting and related service activities",
+    industry:
+      "Crops and animal production, hunting and related service activities",
+    industryShort:
+      "Crops and animal production, hunting and related service activities",
   },
   {
     sector: "Agriculture, forestry and fishing",
@@ -314,20 +335,56 @@ export const MSIC = [
   {
     sector: "Mining and quarrying",
     code: "B 08",
-    industry: "Other mining and quarrying e.g. quarrying of stone, sand and clay",
+    industry:
+      "Other mining and quarrying e.g. quarrying of stone, sand and clay",
     industryShort: "Other mining and quarrying",
   },
   {
     sector: "Mining and quarrying",
     code: "B 09",
-    industry: "Mining support service activities e.g. support activities for petroleum &  natural gas extraction, quarrying of stone, sand and clay",
+    industry:
+      "Mining support service activities e.g. support activities for petroleum &  natural gas extraction, quarrying of stone, sand and clay",
     industryShort: "Mining support service activities",
   },
 ];
 
-export const STATE = ["Johor", "Kedah", "Kelantan", "Malacca", "Negeri Sembilan", "Pahang", "Pulau Pinang", "Perak", "Perlis", "Selangor", "Terengganu", "Sabah", "Sarawak", "Wilayah Persekutuan Kuala Lumpur", "Wilayah Persekutuan Labuan", "Wilayah Persekutuan Putrajaya"];
+export const STATE = [
+  "Johor",
+  "Kedah",
+  "Kelantan",
+  "Malacca",
+  "Negeri Sembilan",
+  "Pahang",
+  "Pulau Pinang",
+  "Perak",
+  "Perlis",
+  "Selangor",
+  "Terengganu",
+  "Sabah",
+  "Sarawak",
+  "Wilayah Persekutuan Kuala Lumpur",
+  "Wilayah Persekutuan Labuan",
+  "Wilayah Persekutuan Putrajaya",
+];
 
-export const TITLE = ["Mr.", "Ms.", "En", "Cik", "Tuan", "Puan", "Dr", "Datuk", "Dato'", "Datuk Seri", "Tan Sri", "Tun", "Datin", "Datin Seri", "Puan Sri", "Toh Puan"];
+export const TITLE = [
+  "Mr.",
+  "Ms.",
+  "En",
+  "Cik",
+  "Tuan",
+  "Puan",
+  "Dr",
+  "Datuk",
+  "Dato'",
+  "Datuk Seri",
+  "Tan Sri",
+  "Tun",
+  "Datin",
+  "Datin Seri",
+  "Puan Sri",
+  "Toh Puan",
+];
 
 export const POSTCODE = {
   Johor: [
@@ -3046,7 +3103,33 @@ export const POSTCODE = {
     "59990",
     "60000",
   ],
-  WilayahPersekutuanLabuan: ["87000", "87010", "87011", "87012", "87013", "87014", "87015", "87016", "87017", "87018", "87019", "87020", "87021", "87022", "87023", "87024", "87025", "87026", "87027", "87028", "87029", "87030", "87031", "87032", "87033"],
+  WilayahPersekutuanLabuan: [
+    "87000",
+    "87010",
+    "87011",
+    "87012",
+    "87013",
+    "87014",
+    "87015",
+    "87016",
+    "87017",
+    "87018",
+    "87019",
+    "87020",
+    "87021",
+    "87022",
+    "87023",
+    "87024",
+    "87025",
+    "87026",
+    "87027",
+    "87028",
+    "87029",
+    "87030",
+    "87031",
+    "87032",
+    "87033",
+  ],
   WilayahPersekutuanPutrajaya: [
     "62000",
     "62007",
@@ -3116,9 +3199,21 @@ export const POSTCODE = {
   ],
 };
 
-export const DEPARTMENT = ["Accounting / Finance", "Strategy / Planning", "Corporate", "Operation", "HR", "Sustainability", "Marketing"];
+export const DEPARTMENT = [
+  "Accounting / Finance",
+  "Strategy / Planning",
+  "Corporate",
+  "Operation",
+  "HR",
+  "Sustainability",
+  "Marketing",
+];
 
-export const POSITIONLEVEL = ["Founder / VP / Director / C-Level", "Manager", "Executive / Admin"];
+export const POSITIONLEVEL = [
+  "Founder / VP / Director / C-Level",
+  "Manager",
+  "Executive / Admin",
+];
 
 export const BUSINESSENTITY = [
   {
@@ -3159,7 +3254,12 @@ export const BUSINESSENTITY = [
   },
 ];
 
-export const SUSBSCRIPTIONPLAN = ["Single Business Plan", "Enterprise Plan", "Corporate Plan", "Premium Plan"];
+export const SUSBSCRIPTIONPLAN = [
+  "Single Business Plan",
+  "Enterprise Plan",
+  "Corporate Plan",
+  "Premium Plan",
+];
 
 export const SUSBSCRIPTIONPERIOD = [
   {
@@ -3172,4 +3272,9 @@ export const SUSBSCRIPTIONPERIOD = [
   },
 ];
 
-export const DIMENSION = ["Environmental", "Social", "Governance", "Sustainable Procurement"];
+export const DIMENSION = [
+  "Environmental",
+  "Social",
+  "Governance",
+  "Sustainable Procurement",
+];
