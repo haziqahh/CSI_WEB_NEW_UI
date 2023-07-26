@@ -1,11 +1,12 @@
 import { message } from "antd";
 import axios from "axios";
+import { APIURL } from "../../compenents/config";
 
 const defaultHeaders = {
   "Content-Type": "application/json",
 };
 
-const API_URL = "https://csiesg-api.azurewebsites.net/api/";
+const API_URL = APIURL;
 
 let isAPIFailed = true;
 let errorCode = "";
