@@ -11,16 +11,17 @@
 // export const REPORTURL = "http://211.24.43.170/pdf";
 // export const PORTFOLIOREPORTURL = "http://211.24.43.170/pdf";
 
-// export const WEBURL = "https://csiesgapp.azurewebsites.net";
-// export const REPORTURL = "http://211.24.43.170/pdf";
-// export const PORTFOLIOREPORTURL = "http://211.24.43.170/pdf";
-// export const APIURL = "https://csiesg-api.azurewebsites.net/api/";
+export const WEBURL = "https://csiesgapp.azurewebsites.net";
+export const REPORTURL = "https://csiesgpdfservice.azurewebsites.net/pdf";
+export const PORTFOLIOREPORTURL =
+  "https://csiesgpdfservice.azurewebsites.net/pdf";
+export const APIURL = "https://csiesg-api.azurewebsites.net/api/";
 
 //Dev
-export const WEBURL = "http://localhost:3000";
-export const REPORTURL = "http://localhost:3000/pdf";
-export const PORTFOLIOREPORTURL = "http://localhost:3000/pdf";
-export const APIURL = "https://csiesg-api.azurewebsites.net/api/";
+// export const WEBURL = "http://localhost:3000";
+// export const REPORTURL = "http://localhost:9711/pdf";
+// export const PORTFOLIOREPORTURL = "http://localhost:9711/pdf";
+// export const APIURL = "https://csiesg-api.azurewebsites.net/api/";
 
 export const MSIC = [
   {
