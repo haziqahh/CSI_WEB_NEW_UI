@@ -1,27 +1,84 @@
-import { Button, Layout, Row, Col, Badge,Progress, Tag, Table, Card, Modal, Input, Form, Tooltip, Checkbox, message, Upload, Select, Spin } from "antd";
+import {
+  Button,
+  Layout,
+  Row,
+  Col,
+  Badge,
+  Progress,
+  Tag,
+  Table,
+  Card,
+  Modal,
+  Input,
+  Form,
+  Tooltip,
+  Checkbox,
+  message,
+  Upload,
+  Select,
+  Spin,
+} from "antd";
 import Header from "./header";
 import UserImage from "../../assests/img/companyLogo.png";
 import Footer from "../footer";
 import APIHelpers from "../api/apiHelper";
-import { CheckOutlined, CloseOutlined, DeleteOutlined, DownloadOutlined, EditOutlined, ExclamationCircleOutlined, EyeOutlined, InfoCircleOutlined, LoadingOutlined, PlusOutlined, ShareAltOutlined, UploadOutlined, UserAddOutlined, UserDeleteOutlined, UserOutlined, UserSwitchOutlined } from "@ant-design/icons";
+import {
+  CheckOutlined,
+  CloseOutlined,
+  DeleteOutlined,
+  DownloadOutlined,
+  EditOutlined,
+  ExclamationCircleOutlined,
+  EyeOutlined,
+  InfoCircleOutlined,
+  LoadingOutlined,
+  PlusOutlined,
+  ShareAltOutlined,
+  UploadOutlined,
+  UserAddOutlined,
+  UserDeleteOutlined,
+  UserOutlined,
+  UserSwitchOutlined,
+} from "@ant-design/icons";
 import Search from "antd/lib/input/Search";
-import { DIMENSION} from "../../compenents/config";
+import { DIMENSION, STORAGE_URL } from "../../compenents/config";
 import React, { useState, useEffect } from "react";
 import { SearchFilter } from "../api/searchHelper";
 import { useRouter } from "next/router";
-import { ESGCalculation, IndexCalculation, getESGLevel } from "../api/calculationHelper";
+import {
+  ESGCalculation,
+  IndexCalculation,
+  getESGLevel,
+} from "../api/calculationHelper";
 import moment from "moment";
 // import { LogoSignedUrl } from "../api/signedUrlHelper";
-import { MSIC, POSTCODE, REPORTURL, STATE, WEBURL, DEPARTMENT, POSITIONLEVEL, TITLE, BUSINESSENTITY, PORTFOLIOREPORTURL, SUSBSCRIPTIONPLAN } from "../../compenents/config";
+import {
+  MSIC,
+  POSTCODE,
+  REPORTURL,
+  STATE,
+  WEBURL,
+  DEPARTMENT,
+  POSITIONLEVEL,
+  TITLE,
+  BUSINESSENTITY,
+  PORTFOLIOREPORTURL,
+  SUSBSCRIPTIONPLAN,
+} from "../../compenents/config";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import { multiRadarChart, radarChart } from "../../compenents/chart";
-
 
 const { Content } = Layout;
 const { Column } = Table;
 const { Option } = Select;
 
-const LearningList = ["ESG", "Environment", "Social", "Governance", "Sustainable Procurement"];
+const LearningList = [
+  "ESG",
+  "Environment",
+  "Social",
+  "Governance",
+  "Sustainable Procurement",
+];
 
 function DashPage() {
   const router = useRouter();
@@ -48,7 +105,8 @@ function DashPage() {
   const [logo, setLogo] = useState(null);
   const [companyLogo, setCompanyLogo] = useState(null);
   const [uploadLogoVisible, setUploadLogoVisible] = useState(false);
-  const [editCompanyProfileVisible, setEditCompanyProfileVisible] = useState(false);
+  const [editCompanyProfileVisible, setEditCompanyProfileVisible] =
+    useState(false);
   const [edit] = Form.useForm();
   const [ssmFile, setSSMFile] = useState(null);
   const [selectState, setSelectState] = useState("");
@@ -82,7 +140,7 @@ function DashPage() {
   const [subscriptionPlan, setSubscriptionPlan] = useState("");
   const [connectedCompany, setConnectedCompany] = useState([]);
   const [connectedCompanyDetails, setConnectedCompanyDetails] = useState([]);
-  const [esgLevel, setEsgLevel] = useState('-');
+  const [esgLevel, setEsgLevel] = useState("-");
   const [esgScoreLevels, setesgScoreLevels] = useState([]);
   const [page, setPage] = useState(1);
   const [score, setScore] = useState({});
@@ -104,7 +162,7 @@ function DashPage() {
     }
   }, [profile]);
 
-  useEffect(()=>{
+  useEffect(() => {
     setEsgLevel(getESGLevel(accessLevel));
   });
 
@@ -139,7 +197,10 @@ function DashPage() {
   }, [completedAssessment]);
 
   useEffect(() => {
-    if ((pendingShare === true || pendingConnection === true) && router.query.login) {
+    if (
+      (pendingShare === true || pendingConnection === true) &&
+      router.query.login
+    ) {
       setPendingVisible(true);
     }
   }, [pendingShare, pendingConnection]);
@@ -162,14 +223,23 @@ function DashPage() {
         let com = [];
         let role = "";
         if (val.requestCompanyID !== company.id) {
-          com = fullCompany.filter((item) => item.id === val.requestCompanyID)[0];
+          com = fullCompany.filter(
+            (item) => item.id === val.requestCompanyID
+          )[0];
           role = "receiver";
         } else {
-          com = fullCompany.filter((item) => item.id === val.receivedCompanyID)[0];
+          com = fullCompany.filter(
+            (item) => item.id === val.receivedCompanyID
+          )[0];
           role = "requestor";
         }
         let date = new Date(val.linkDate);
-        date = ("0" + date.getDate()).slice(-2) + "/" + ("0" + (date.getMonth() + 1)).slice(-2) + "/" + date.getFullYear();
+        date =
+          ("0" + date.getDate()).slice(-2) +
+          "/" +
+          ("0" + (date.getMonth() + 1)).slice(-2) +
+          "/" +
+          date.getFullYear();
         connection.push({
           id: com.id,
           connectionId: val.id,
@@ -178,7 +248,12 @@ function DashPage() {
           industry: com.industry,
           linkDate: date,
           role: role,
-          status: val.status === "INVITED" ? "Pending" : val.status === "ACTIVE" ? "Connected" : "Disconnected",
+          status:
+            val.status === "INVITED"
+              ? "Pending"
+              : val.status === "ACTIVE"
+              ? "Connected"
+              : "Disconnected",
         });
         if (val.status !== "INACTIVE") {
           linked.push(com.id);
@@ -194,10 +269,18 @@ function DashPage() {
           setLinkCompanyId(linked);
           setConnectedCompany(connected);
           setConnectedCompanyDetails(connectedDetails);
-          setLinkCompany(connection.filter((item) => item.status !== "Disconnected"));
-          setFullLinkedCompany(connection.filter((item) => item.status !== "Disconnected"));
+          setLinkCompany(
+            connection.filter((item) => item.status !== "Disconnected")
+          );
+          setFullLinkedCompany(
+            connection.filter((item) => item.status !== "Disconnected")
+          );
           setFilteredCompany([]);
-          setNewCompany(fullCompany.filter((item) => item.id !== company.id && !linked.includes(item.id)));
+          setNewCompany(
+            fullCompany.filter(
+              (item) => item.id !== company.id && !linked.includes(item.id)
+            )
+          );
         }
       });
     } else {
@@ -229,7 +312,9 @@ function DashPage() {
           });
         }
       });
-      linked = linked.sort((a, b) => new Date(b.completionDate) - new Date(a.completionDate));
+      linked = linked.sort(
+        (a, b) => new Date(b.completionDate) - new Date(a.completionDate)
+      );
       let year = new Object();
       let smeId = [];
       linked.map((val) => {
@@ -288,9 +373,17 @@ function DashPage() {
                   totalScore += res.overall;
                   if (index1 === year[val].length - 1) {
                     setTimeout(() => {
-                      if ((currentYear === parseInt(yearValue) && currentQuarter > parseInt(quarter)) || currentYear > parseInt(yearValue)) {
+                      if (
+                        (currentYear === parseInt(yearValue) &&
+                          currentQuarter > parseInt(quarter)) ||
+                        currentYear > parseInt(yearValue)
+                      ) {
                         portfolio.push({
-                          name: "Portfolio Report as of " + quarter + " " + yearValue,
+                          name:
+                            "Portfolio Report as of " +
+                            quarter +
+                            " " +
+                            yearValue,
                           Env: Math.round(env / year[val].length),
                           Soc: Math.round(soc / year[val].length),
                           Gov: Math.round(gov / year[val].length),
@@ -311,7 +404,9 @@ function DashPage() {
                           year: yearValue,
                           quarter: val.slice(-1),
                         });
-                        setEsgLevel(getESGLevel(Math.round(totalScore / linked.length)));
+                        setEsgLevel(
+                          getESGLevel(Math.round(totalScore / linked.length))
+                        );
                         setAllPortfolioScore(portfolio);
                         setFullPortfolioScore(portfolio);
                       }
@@ -334,22 +429,27 @@ function DashPage() {
     }
   }, [connectedCompany, company]);
 
-
   const getSubscription = () => {
-    APIHelpers.GET("v1/subscriptions?corporateId=" + profile.companyID).then((res) => {
-      if (res.items) {
-        setSubscriptionPlan(res.items.at(-1).subscriptionPlan);
+    APIHelpers.GET("v1/subscriptions?corporateId=" + profile.companyID).then(
+      (res) => {
+        if (res.items) {
+          setSubscriptionPlan(res.items.at(-1).subscriptionPlan);
+        }
       }
-    });
+    );
   };
 
   const getSME = () => {
     APIHelpers.GET("v1/smes")
       .then((res) => {
         if (res.items) {
-          let filter = res.items.filter((item) => item.id !== company.id && !linkedCompany.includes(item.id));
+          let filter = res.items.filter(
+            (item) => item.id !== company.id && !linkedCompany.includes(item.id)
+          );
           filter.map((val) => {
-            val.industry = MSIC.filter((item) => item.code === val.msic)[0].industry;
+            val.industry = MSIC.filter(
+              (item) => item.code === val.msic
+            )[0].industry;
           });
           setFullCompany(filter);
         }
@@ -388,7 +488,7 @@ function DashPage() {
         //     })
         //     .catch(() => {});
         // }
-        setCompanyLogo(WEBURL + "/storage/" + res.items[0].profilePicture);
+        setCompanyLogo(STORAGE_URL + "/storage/" + res.items[0].profilePicture);
         setCompany(res.items[0]);
       })
       .catch(() => {});
@@ -398,11 +498,23 @@ function DashPage() {
     APIHelpers.GET("v1/assessments?smeId=" + company.id)
       .then((res) => {
         if (res.items !== null) {
-          if (res.items.filter((item) => item.completionDate === "0001-01-01T00:00:00Z").length > 0) {
-            setContinueAssessment(res.items.filter((item) => item.completionDate === "0001-01-01T00:00:00Z")[0]);
+          if (
+            res.items.filter(
+              (item) => item.completionDate === "0001-01-01T00:00:00Z"
+            ).length > 0
+          ) {
+            setContinueAssessment(
+              res.items.filter(
+                (item) => item.completionDate === "0001-01-01T00:00:00Z"
+              )[0]
+            );
           }
-          res.items = res.items.filter((item) => item.completionDate !== "0001-01-01T00:00:00Z");
-          res.items = res.items.sort((a, b) => new Date(b.completionDate) - new Date(a.completionDate));
+          res.items = res.items.filter(
+            (item) => item.completionDate !== "0001-01-01T00:00:00Z"
+          );
+          res.items = res.items.sort(
+            (a, b) => new Date(b.completionDate) - new Date(a.completionDate)
+          );
           res.items.map((val) => {
             val.shared = [];
             if (val.sharedWiths !== null) {
@@ -416,27 +528,56 @@ function DashPage() {
             }
             let date = new Date(val.completionDate);
             val.oriDate = date;
-            val.formatCompletionDate = ("0" + date.getDate()).slice(-2) + "/" + ("0" + (date.getMonth() + 1)).slice(-2) + "/" + date.getFullYear();
-            let validStart = ("0" + date.getDate()).slice(-2) + "/" + ("0" + (date.getMonth() + 1)).slice(-2) + "/" + date.getFullYear();
+            val.formatCompletionDate =
+              ("0" + date.getDate()).slice(-2) +
+              "/" +
+              ("0" + (date.getMonth() + 1)).slice(-2) +
+              "/" +
+              date.getFullYear();
+            let validStart =
+              ("0" + date.getDate()).slice(-2) +
+              "/" +
+              ("0" + (date.getMonth() + 1)).slice(-2) +
+              "/" +
+              date.getFullYear();
             let validEnd = date;
             validEnd.setDate(validEnd.getDate() - 1);
             validEnd.setFullYear(validEnd.getFullYear() + 1);
-            validEnd = ("0" + validEnd.getDate()).slice(-2) + "/" + ("0" + (validEnd.getMonth() + 1)).slice(-2) + "/" + validEnd.getFullYear();
+            validEnd =
+              ("0" + validEnd.getDate()).slice(-2) +
+              "/" +
+              ("0" + (validEnd.getMonth() + 1)).slice(-2) +
+              "/" +
+              validEnd.getFullYear();
             val.validityDate = validStart + " - " + validEnd;
           });
-          if (res.items.filter((item) => item.formatCompletionDate !== "01 Jan 1").length > 0) {
-            let last = res.items.filter((item) => item.formatCompletionDate !== "01 Jan 1")[0];
+          if (
+            res.items.filter((item) => item.formatCompletionDate !== "01 Jan 1")
+              .length > 0
+          ) {
+            let last = res.items.filter(
+              (item) => item.formatCompletionDate !== "01 Jan 1"
+            )[0];
             let lastDate = new Date(last.completionDate);
             let current = new Date();
-            let months = Math.floor((current - lastDate) / (1000 * 60 * 60 * 24 * 30));
+            let months = Math.floor(
+              (current - lastDate) / (1000 * 60 * 60 * 24 * 30)
+            );
             if (months < 6) {
               lastDate = new Date(lastDate.setMonth(lastDate.getMonth() + 6));
-              lastDate = ("0" + lastDate.getDate()).slice(-2) + "/" + ("0" + (lastDate.getMonth() + 1)).slice(-2) + "/" + lastDate.getFullYear();
+              lastDate =
+                ("0" + lastDate.getDate()).slice(-2) +
+                "/" +
+                ("0" + (lastDate.getMonth() + 1)).slice(-2) +
+                "/" +
+                lastDate.getFullYear();
               setCurrentProgress(100);
               setLastAssessment(lastDate);
             }
           }
-          let completed = res.items.filter((item) => item.formatCompletionDate !== "01 Jan 1");
+          let completed = res.items.filter(
+            (item) => item.formatCompletionDate !== "01 Jan 1"
+          );
           completed.map((val, index) => {
             APIHelpers.GET("v1/assessmentEntries?assessmentId=" + val.id)
               .then((res) => {
@@ -445,7 +586,10 @@ function DashPage() {
                     val.score = res;
                     if (index === completed.length - 1) {
                       setTimeout(() => {
-                        completed = completed.sort((a, b) => moment(a.oriDate).unix() - moment(b.oriDate).unix());
+                        completed = completed.sort(
+                          (a, b) =>
+                            moment(a.oriDate).unix() - moment(b.oriDate).unix()
+                        );
                         setCompletedAssessment(completed);
                         setFullCompletedAssessment(completed);
                       }, 1000);
@@ -465,40 +609,67 @@ function DashPage() {
     APIHelpers.GET("v1/assessments?id=63b6be1385b6eb22fa470ec3").then((res) => {
       let assessment = res.items[0];
       let date = new Date(assessment.completionDate);
-      assessment.formatCompletionDate = ("0" + date.getDate()).slice(-2) + "/" + ("0" + (date.getMonth() + 1)).slice(-2) + "/" + date.getFullYear();
-      let validStart = ("0" + date.getDate()).slice(-2) + "/" + ("0" + (date.getMonth() + 1)).slice(-2) + "/" + date.getFullYear();
+      assessment.formatCompletionDate =
+        ("0" + date.getDate()).slice(-2) +
+        "/" +
+        ("0" + (date.getMonth() + 1)).slice(-2) +
+        "/" +
+        date.getFullYear();
+      let validStart =
+        ("0" + date.getDate()).slice(-2) +
+        "/" +
+        ("0" + (date.getMonth() + 1)).slice(-2) +
+        "/" +
+        date.getFullYear();
       let validEnd = date;
       validEnd.setDate(validEnd.getDate() - 1);
       validEnd.setFullYear(validEnd.getFullYear() + 1);
-      validEnd = ("0" + validEnd.getDate()).slice(-2) + "/" + ("0" + (validEnd.getMonth() + 1)).slice(-2) + "/" + validEnd.getFullYear();
+      validEnd =
+        ("0" + validEnd.getDate()).slice(-2) +
+        "/" +
+        ("0" + (validEnd.getMonth() + 1)).slice(-2) +
+        "/" +
+        validEnd.getFullYear();
       assessment.validityDate = validStart + " - " + validEnd;
       setCompletedAssessment(assessment);
-      APIHelpers.GET("v1/assessmentEntries?assessmentId=" + assessment.id).then((res) => {
-        if (res.items !== null) {
-          let structure = [];
-          let index = 0;
-          let doc = [];
-          res.items.map((val, index1) => {
-            if (val.questionType === "PSYCHOGRAPHIC" || val.questionType === "UPLOAD") {
-              val.questionNo = index + 1;
-              index += 1;
-              structure.push(val.questionType === "PSYCHOGRAPHIC" || (val.questionType === "UPLOAD" && val.question.options.length < 3) ? val.answer.scalar : val.answer.text);
-            }
-            if (val.questionType === "UPLOAD" && val.question.options.length > 2) {
-              doc = [...doc, ...val.answer.text];
-            }
-          });
-          ESGCalculation(res.items)
-            .then((score) => {
-              setScore(score);
-            })
-            .catch(() => {});
+      APIHelpers.GET("v1/assessmentEntries?assessmentId=" + assessment.id).then(
+        (res) => {
+          if (res.items !== null) {
+            let structure = [];
+            let index = 0;
+            let doc = [];
+            res.items.map((val, index1) => {
+              if (
+                val.questionType === "PSYCHOGRAPHIC" ||
+                val.questionType === "UPLOAD"
+              ) {
+                val.questionNo = index + 1;
+                index += 1;
+                structure.push(
+                  val.questionType === "PSYCHOGRAPHIC" ||
+                    (val.questionType === "UPLOAD" &&
+                      val.question.options.length < 3)
+                    ? val.answer.scalar
+                    : val.answer.text
+                );
+              }
+              if (
+                val.questionType === "UPLOAD" &&
+                val.question.options.length > 2
+              ) {
+                doc = [...doc, ...val.answer.text];
+              }
+            });
+            ESGCalculation(res.items)
+              .then((score) => {
+                setScore(score);
+              })
+              .catch(() => {});
+          }
         }
-      });
+      );
     });
   };
-
-  
 
   // const getAllAssessment = () => {
   //   APIHelpers.GET("v1/assessments")
@@ -549,11 +720,10 @@ function DashPage() {
   //           })
   //           .catch(() => {});
 
-            
   //       });
   //     })
   //     .catch(() => {});
-      
+
   // };
 
   const getAllCompletedAssesmentComparison = () => {
@@ -565,22 +735,31 @@ function DashPage() {
           if (res.items.length > 1) {
             all = all.filter((item) => item.smeID !== company.id);
           }
-          all = all.sort((a, b) => new Date(b.completionDate) - new Date(a.completionDate));
+          all = all.sort(
+            (a, b) => new Date(b.completionDate) - new Date(a.completionDate)
+          );
           let companyId = [];
           let allObj = new Object();
           let allAnswer = new Object();
-          
+
           if (all.length > 0) {
             all.map((val, index) => {
               if (!companyId.includes(val.smeID)) {
                 APIHelpers.GET("v1/assessmentEntries?assessmentId=" + val.id)
                   .then((res) => {
-                    let scalarAnswer = res.items.filter((item) => item.questionType === "PSYCHOGRAPHIC" || (item.questionType === "UPLOAD" && item.question.options.length < 3));
+                    let scalarAnswer = res.items.filter(
+                      (item) =>
+                        item.questionType === "PSYCHOGRAPHIC" ||
+                        (item.questionType === "UPLOAD" &&
+                          item.question.options.length < 3)
+                    );
                     scalarAnswer.map((val) => {
                       if (!(val.questionID in allAnswer)) {
                         allAnswer[val.questionID] = 0;
                       }
-                      val.answer.scalar === true ? (allAnswer[val.questionID] += 1) : null;
+                      val.answer.scalar === true
+                        ? (allAnswer[val.questionID] += 1)
+                        : null;
                     });
                     ESGCalculation(res.items)
                       .then((result) => {
@@ -594,17 +773,29 @@ function DashPage() {
                         });
                         if (index === all.length - 1) {
                           Object.keys(allObj).map((score) => {
-                            allObj[score] = Math.round(allObj[score] / all.length);
+                            allObj[score] = Math.round(
+                              allObj[score] / all.length
+                            );
                           });
                           companyId.push(val.smeID);
                           setSummary([
                             {
                               name: "Others",
-                              data: [allObj["Environmental"], allObj["Governance"], allObj["Sustainable Procurement"], allObj["Social"]],
+                              data: [
+                                allObj["Environmental"],
+                                allObj["Governance"],
+                                allObj["Sustainable Procurement"],
+                                allObj["Social"],
+                              ],
                             },
                             {
                               name: "Self",
-                              data: [score["Environmental"], score["Governance"], score["Sustainable Procurement"], score["Social"]],
+                              data: [
+                                score["Environmental"],
+                                score["Governance"],
+                                score["Sustainable Procurement"],
+                                score["Social"],
+                              ],
                             },
                           ]);
                         }
@@ -648,7 +839,9 @@ function DashPage() {
     APIHelpers.GET("v1/assessmentEntries?assessmentId=" + continueAssessment.id)
       .then((res) => {
         let fullLength = res.items.length;
-        let inProgress = res.items.filter((item) => item.respondStatus !== "TO_START").length;
+        let inProgress = res.items.filter(
+          (item) => item.respondStatus !== "TO_START"
+        ).length;
         let progress = (inProgress / (fullLength - 1)) * 100;
         setCurrentProgress(Math.round(progress));
       })
@@ -659,8 +852,8 @@ function DashPage() {
     APIHelpers.GET("v1/assessmentEntries?assessmentId=" + assessment[0].id)
       .then((res) => {
         IndexCalculation(res.items)
-        .then((res) => {
-          if (company.approvedBy !== null) {
+          .then((res) => {
+            if (company.approvedBy !== null) {
               setAccessLevel(res);
             } else {
               setAccessLevel(-1);
@@ -669,7 +862,7 @@ function DashPage() {
           .catch(() => {});
       })
       .catch(() => {});
-      console.log('test');
+    console.log("test");
   };
 
   const getProfile = () => {
@@ -698,15 +891,17 @@ function DashPage() {
       .catch(() => {});
   };
 
-  
-
-
   const docProps = {
     name: "file",
     multiple: true,
     maxCount: 1,
     beforeUpload: (file) => {
-      if (file.type !== "application/pdf" && file.type !== "image/png" && file.type !== "image/jpg" && file.type !== "image/jpeg") {
+      if (
+        file.type !== "application/pdf" &&
+        file.type !== "image/png" &&
+        file.type !== "image/jpg" &&
+        file.type !== "image/jpeg"
+      ) {
         message.error({
           content: `${file.name} is an invalid file format. Please change the file extension to either .pdf, .png, .jpg, .jpeg.`,
           style: {
@@ -743,7 +938,11 @@ function DashPage() {
     multiple: true,
     maxCount: 1,
     beforeUpload: (file) => {
-      if (file.type !== "image/png" && file.type !== "image/jpg" && file.type !== "image/jpeg") {
+      if (
+        file.type !== "image/png" &&
+        file.type !== "image/jpg" &&
+        file.type !== "image/jpeg"
+      ) {
         message.error({
           content: `${file.name} is an invalid file format. Please change the file extension to either .png, .jpg, .jpeg.`,
           style: {
@@ -825,7 +1024,13 @@ function DashPage() {
 
   const showUploadModal = () => {
     return (
-      <Modal visible={uploadLogoVisible} className="Modal-rounded-login" footer={null} onCancel={() => setUploadLogoVisible(false)} width={700}>
+      <Modal
+        visible={uploadLogoVisible}
+        className="Modal-rounded-login"
+        footer={null}
+        onCancel={() => setUploadLogoVisible(false)}
+        width={700}
+      >
         <div className="bg-darkprimary px-8 py-8 text-white rounded-t-xl">
           <p className="font-bold text-2xl">Upload Company Logo</p>
         </div>
@@ -838,7 +1043,11 @@ function DashPage() {
           </Upload>
         </div>
         <div className="px-8 pt-4 pb-8 flex justify-center">
-          <Button className="bg-#21324E text-white hover:bg-#21324E focus:bg-#21324E hover:text-white focus:text-white" onClick={() => updateLogo()} disabled={logo === null ? true : false}>
+          <Button
+            className="bg-#21324E text-white hover:bg-#21324E focus:bg-#21324E hover:text-white focus:text-white"
+            onClick={() => updateLogo()}
+            disabled={logo === null ? true : false}
+          >
             Submit
           </Button>
         </div>
@@ -846,8 +1055,6 @@ function DashPage() {
     );
   };
 
-
-  
   const shopMSIC = MSIC.map((row) => {
     return (
       <Option value={row.code}>
@@ -863,11 +1070,19 @@ function DashPage() {
     } else if (pendingShare === false && pendingConnection === true) {
       text = "You have company connection request pending.";
     } else if (pendingShare === true && pendingConnection === true) {
-      text = "You have company connection request and report share request pending.";
+      text =
+        "You have company connection request and report share request pending.";
       width = 800;
     }
     return (
-      <Modal visible={pendingVisible} className="mt-48" closable={false} footer={null} width={width} onCancel={() => setPendingVisible(false)}>
+      <Modal
+        visible={pendingVisible}
+        className="mt-48"
+        closable={false}
+        footer={null}
+        width={width}
+        onCancel={() => setPendingVisible(false)}
+      >
         <div className="flex justify-center items-center gap-x-2">
           <InfoCircleOutlined className="text-base 1000:text-lg text-orange-500" />
           <p className="font-semibold text-base 1000:text-lg">{text}</p>
@@ -881,81 +1096,150 @@ function DashPage() {
       return {
         key: key,
         score: score[key],
-        level: getESGLevel(score[key])
+        level: getESGLevel(score[key]),
       };
     });
 
     return (
-      <Row className="mt-8 justify-center" >
+      <Row className="mt-8 justify-center">
         {scoreObj.map((scoreCategories) => (
-         
-         <Col className="margin: 0 auto;">
-           <div className="rounded-2xl bg-smeProfile p-10 shadow-md ml-2" style={{ width: "280px", height: "180px" }} key={scoreCategories.key}>
-            <p className="text-xl 1400:text-lg 820:text-md font-semibold text-sm w-1/3">{scoreCategories.key}</p>
-            <p className="text-xl 1400:text-lg 820:text-md font-semibold text-sm w-1/3">{ scoreCategories.score + "%"}</p>
-            <p className="text-xl 1400:text-lg 820:text-md font-semibold text-sm w-1/3">{(scoreCategories.level)}</p>
-           </div>
-         </Col>
-  
-       
+          <Col className="margin: 0 auto;">
+            <div
+              className="rounded-2xl bg-smeProfile p-10 shadow-md ml-2"
+              style={{ width: "280px", height: "180px" }}
+              key={scoreCategories.key}
+            >
+              <p className="text-xl 1400:text-lg 820:text-md font-semibold text-sm w-1/3">
+                {scoreCategories.key}
+              </p>
+              <p className="text-xl 1400:text-lg 820:text-md font-semibold text-sm w-1/3">
+                {scoreCategories.score + "%"}
+              </p>
+              <p className="text-xl 1400:text-lg 820:text-md font-semibold text-sm w-1/3">
+                {scoreCategories.level}
+              </p>
+            </div>
+          </Col>
         ))}
       </Row>
     );
-  }
+  };
 
-  
   return (
     <Layout className="min-h-full">
-    
       <Content className="bg-white 1150:px-12 px-8 min-h-3/10 w-full">
         <Row className="flex mt-8  gap-x-8 justify-between">
           <Col className="w-full 1150:w-12/12">
             <div className="rounded-2xl p-6 min-h-55vh 1150:h-30vh shadow-md">
               <div className="flex flex-col items-left justify-left h-full ">
                 <div className="flex flex-col justify-left items-left text-left">
-                <Row className="mt-8 1000:mt-4"> 
-                  <Col  xs={8} className="d-flex gap-4 justify-center item-center">    
-                  <div  style={{display: "flex", alignItems: "center", justifyContent: "center", height: "100%"}}>       
-                      {company.profilePicture === "" ? (
-                        <Tooltip title="Upload Company Logo" className="cursor-pointer" onClick={() => setUploadLogoVisible(true)}>
-                          <img src={UserImage.src} alt="Profile" width={250} height={250} />
-                        </Tooltip>
-                      ) : (
-                        <Tooltip title="Re-upload Company Logo" className="cursor-pointer" onClick={() => setUploadLogoVisible(true)}>
-                          <img src={companyLogo !== null ? companyLogo : UserImage.src} alt="Profile" width={250} height={250} />
-                        </Tooltip>
-                      )}
-                      </div>   
-                  </Col> 
-                 
-                  <Col xs={16} className="d-flex gap-4">
-                  <Row>
-                      <p className="1150:text-xl mb-4 1000:mb-4 font-semibold">{company.companyName} ({company.ssmNumber})</p></Row>
-                    <Row>
-                      
-                   
-                    <Col xs={8} className="d-flex gap-4">
-                          <p className="text-sm 1000:text-base font-semibold mt-2 1000:mt-4">Business Registration Certificate:</p>
-                          <p className="font-semibold text-sm 1000:text-base">{company.ssmDoc !== "" ? "Uploaded" : "Not Uploaded"}</p>
-                        {company.approvedBy !== null ? (
-                          <div>
-                            <p className="text-sm 1000:text-base font-semibold mt-2 1000:mt-4">Status:</p>
-                            <p className="font-semibold text-sm 1000:text-base">Verified</p>
-                          </div>
+                  <Row className="mt-8 1000:mt-4">
+                    <Col
+                      xs={8}
+                      className="d-flex gap-4 justify-center item-center"
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          height: "100%",
+                        }}
+                      >
+                        {company.profilePicture === "" ? (
+                          <Tooltip
+                            title="Upload Company Logo"
+                            className="cursor-pointer"
+                            onClick={() => setUploadLogoVisible(true)}
+                          >
+                            <img
+                              src={UserImage.src}
+                              alt="Profile"
+                              width={250}
+                              height={250}
+                            />
+                          </Tooltip>
                         ) : (
-                          <div>
-                            <p className="text-sm 1000:text-base font-semibold mt-2 1000:mt-4">Status:</p>
-                            <p className="font-semibold text-sm 1000:text-base">Unverified</p>
-                          </div>
+                          <Tooltip
+                            title="Re-upload Company Logo"
+                            className="cursor-pointer"
+                            onClick={() => setUploadLogoVisible(true)}
+                          >
+                            <img
+                              src={
+                                companyLogo !== null
+                                  ? companyLogo
+                                  : UserImage.src
+                              }
+                              alt="Profile"
+                              width={250}
+                              height={250}
+                            />
+                          </Tooltip>
                         )}
-                        <div className="text-sm 1000:text-base font-semibold mt-2 1000:mt-4">Note:</div> {company.ssmDoc !== "" ? company.approvedBy !== null ? <div className="font-semibold text-sm 1000:text-base">Your company has been verified</div> : <span className="font-semibold text-sm 1000:text-base">We will verify your account shortly</span> : <span className="font-semibold text-sm 1000:text-base">Please upload your business registration certificate</span>}
-                       
+                      </div>
                     </Col>
-                    <Col xs={8} className="d-flex gap-4">
-                    {/* <p className="text-sm 1000:text-base font-semibold mt-2 1000:mt-4">My ESG Level:</p>
+
+                    <Col xs={16} className="d-flex gap-4">
+                      <Row>
+                        <p className="1150:text-xl mb-4 1000:mb-4 font-semibold">
+                          {company.companyName} ({company.ssmNumber})
+                        </p>
+                      </Row>
+                      <Row>
+                        <Col xs={8} className="d-flex gap-4">
+                          <p className="text-sm 1000:text-base font-semibold mt-2 1000:mt-4">
+                            Business Registration Certificate:
+                          </p>
+                          <p className="font-semibold text-sm 1000:text-base">
+                            {company.ssmDoc !== ""
+                              ? "Uploaded"
+                              : "Not Uploaded"}
+                          </p>
+                          {company.approvedBy !== null ? (
+                            <div>
+                              <p className="text-sm 1000:text-base font-semibold mt-2 1000:mt-4">
+                                Status:
+                              </p>
+                              <p className="font-semibold text-sm 1000:text-base">
+                                Verified
+                              </p>
+                            </div>
+                          ) : (
+                            <div>
+                              <p className="text-sm 1000:text-base font-semibold mt-2 1000:mt-4">
+                                Status:
+                              </p>
+                              <p className="font-semibold text-sm 1000:text-base">
+                                Unverified
+                              </p>
+                            </div>
+                          )}
+                          <div className="text-sm 1000:text-base font-semibold mt-2 1000:mt-4">
+                            Note:
+                          </div>{" "}
+                          {company.ssmDoc !== "" ? (
+                            company.approvedBy !== null ? (
+                              <div className="font-semibold text-sm 1000:text-base">
+                                Your company has been verified
+                              </div>
+                            ) : (
+                              <span className="font-semibold text-sm 1000:text-base">
+                                We will verify your account shortly
+                              </span>
+                            )
+                          ) : (
+                            <span className="font-semibold text-sm 1000:text-base">
+                              Please upload your business registration
+                              certificate
+                            </span>
+                          )}
+                        </Col>
+                        <Col xs={8} className="d-flex gap-4">
+                          {/* <p className="text-sm 1000:text-base font-semibold mt-2 1000:mt-4">My ESG Level:</p>
                       <p className="font-semibold text-sm 1000:text-base">{esgLevel}</p>  */}
 
-                      {/* {subscriptionPlan !== "Single Business Plan" ? (
+                          {/* {subscriptionPlan !== "Single Business Plan" ? (
                         <div>
                           <p className="text-sm 1000:text-base font-semibold mt-2 1000:mt-4">My Portfolio ESG Score:</p>
                           {esgLevel >= 0 && esgLevel < 25 ? (
@@ -974,12 +1258,16 @@ function DashPage() {
                         </div>
                         
                       ) : null}    */}
-                      <p className="text-sm 1000:text-base font-semibold mt-2 1000:mt-4">Connections:</p>
-                      <p className="font-semibold text-sm 1000:text-base">{connectedCompany.length}</p>
-                       {/* {subscriptionPlan !== "Single Business Plan" ? <p className="text-sm 1000:text-base font-semibold mt-2 1000:mt-4">Reports Shared:</p> : null} */}
-                      {/* {subscriptionPlan !== "Single Business Plan" ? <p className="font-semibold text-sm 1000:text-base">{fullSharedAssessment.filter((item) => item.shared === "ACTIVE").length}</p> : null} */}
-                    </Col>
-                    {/* <Col className="w-40%">
+                          <p className="text-sm 1000:text-base font-semibold mt-2 1000:mt-4">
+                            Connections:
+                          </p>
+                          <p className="font-semibold text-sm 1000:text-base">
+                            {connectedCompany.length}
+                          </p>
+                          {/* {subscriptionPlan !== "Single Business Plan" ? <p className="text-sm 1000:text-base font-semibold mt-2 1000:mt-4">Reports Shared:</p> : null} */}
+                          {/* {subscriptionPlan !== "Single Business Plan" ? <p className="font-semibold text-sm 1000:text-base">{fullSharedAssessment.filter((item) => item.shared === "ACTIVE").length}</p> : null} */}
+                        </Col>
+                        {/* <Col className="w-40%">
                       <p className="text-sm 1000:text-base font-semibold mt-2 1000:mt-4">Where you are now</p>
                         {summary.length > 0 ? (
                         <div className={window.screen.width > 1800 ? "flex justify-around" : ""}>
@@ -992,27 +1280,21 @@ function DashPage() {
                         </div> 
                     ) : null} 
                     </Col> */}
-                    </Row>
+                      </Row>
                     </Col>
-                </Row>
-                
-               
+                  </Row>
                 </div>
               </div>
             </div>
-            
           </Col>
-          </Row>
-            {/* {showESGScoreLevels(score)} */}
-            <Row className="mt-8 rounded-lg">
-              
-              {reportID !== "" ? shareReport() : null}
-              {showUploadModal()}
-
-            </Row>
-          {/* </Col> */}
+        </Row>
+        {/* {showESGScoreLevels(score)} */}
+        <Row className="mt-8 rounded-lg">
+          {reportID !== "" ? shareReport() : null}
+          {showUploadModal()}
+        </Row>
+        {/* </Col> */}
       </Content>
-      
     </Layout>
   );
 }

@@ -16,6 +16,7 @@ export const REPORTURL = "https://csiesgpdfservice.azurewebsites.net/pdf";
 export const PORTFOLIOREPORTURL =
   "https://csiesgpdfservice.azurewebsites.net/pdf";
 export const APIURL = "https://csiesg-api.azurewebsites.net/api/";
+export const STORAGE_URL = "https://csiesgstorage.blob.core.windows.net";
 
 //Dev
 // export const WEBURL = "http://localhost:3000";
