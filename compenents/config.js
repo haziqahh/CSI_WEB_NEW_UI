@@ -11,6 +11,7 @@
 // export const REPORTURL = "http://211.24.43.170/pdf";
 // export const PORTFOLIOREPORTURL = "http://211.24.43.170/pdf";
 
+// Production
 export const WEBURL = "https://csiesgapp.azurewebsites.net";
 export const REPORTURL = "https://csiesgpdfservice.azurewebsites.net/pdf";
 export const PORTFOLIOREPORTURL =
@@ -23,6 +24,7 @@ export const STORAGE_URL = "https://csiesgstorage.blob.core.windows.net";
 // export const REPORTURL = "http://localhost:9711/pdf";
 // export const PORTFOLIOREPORTURL = "http://localhost:9711/pdf";
 // export const APIURL = "https://csiesg-api.azurewebsites.net/api/";
+// export const STORAGE_URL = "https://csiesgstorage.blob.core.windows.net";
 
 export const MSIC = [
   {

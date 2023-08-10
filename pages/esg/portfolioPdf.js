@@ -4,13 +4,23 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { ESGCalculation } from "../api/calculationHelper";
 import { DIMENSION, MSIC, REPORTURL, WEBURL } from "../../compenents/config";
-import { portfolioColumnChartTemp, portfolioDonutChartTemp } from "../../compenents/chart";
+import {
+  portfolioColumnChartTemp,
+  portfolioDonutChartTemp,
+} from "../../compenents/chart";
 import SmeLogo from "../../assests/logo/csiOri.png";
 
 const { Content } = Layout;
 const { Column } = Table;
 const COLORS = ["#4CB4B2", "#3D8F8F", "#1B786E", "#00717D", "#004B53"];
-const SIXCOLORS = ["#53c9c7", "#4CB4B2", "#3D8F8F", "#1B786E", "#00717D", "#004B53"];
+const SIXCOLORS = [
+  "#53c9c7",
+  "#4CB4B2",
+  "#3D8F8F",
+  "#1B786E",
+  "#00717D",
+  "#004B53",
+];
 const SCORELEVEL = ["Exceptional", "Progressive", "Good", "Fair", "Beginner"];
 
 function HomePage() {
@@ -51,7 +61,12 @@ function HomePage() {
         sessionStorage.setItem("accessToken", router.query.token);
       }
       let date = new Date();
-      date = ("0" + date.getDate()).slice(-2) + "/" + ("0" + (date.getMonth() + 1)).slice(-2) + "/" + date.getFullYear();
+      date =
+        ("0" + date.getDate()).slice(-2) +
+        "/" +
+        ("0" + (date.getMonth() + 1)).slice(-2) +
+        "/" +
+        date.getFullYear();
       if (router.query.quarter && router.query.year) {
         setFooterYear(router.query.year);
         if (router.query.quarter === "1") {
@@ -103,12 +118,21 @@ function HomePage() {
       all.map((val, index) => {
         let com = [];
         if (val.requestCompanyID !== company.id) {
-          com = fullCompany.filter((item) => item.id === val.requestCompanyID)[0];
+          com = fullCompany.filter(
+            (item) => item.id === val.requestCompanyID
+          )[0];
         } else {
-          com = fullCompany.filter((item) => item.id === val.receivedCompanyID)[0];
+          com = fullCompany.filter(
+            (item) => item.id === val.receivedCompanyID
+          )[0];
         }
         let date = new Date(val.linkDate);
-        date = ("0" + date.getDate()).slice(-2) + "/" + ("0" + (date.getMonth() + 1)).slice(-2) + "/" + date.getFullYear();
+        date =
+          ("0" + date.getDate()).slice(-2) +
+          "/" +
+          ("0" + (date.getMonth() + 1)).slice(-2) +
+          "/" +
+          date.getFullYear();
         connection.push({
           id: com.id,
           connectionId: val.id,
@@ -147,7 +171,9 @@ function HomePage() {
         }
       });
       setAllAggScoreLength(linked.length);
-      linked = linked.sort((a, b) => new Date(b.completionDate) - new Date(a.completionDate));
+      linked = linked.sort(
+        (a, b) => new Date(b.completionDate) - new Date(a.completionDate)
+      );
       let year = new Object();
       let smeId = [];
       let envRank = [0, 0, 0, 0, 0];
@@ -226,7 +252,9 @@ function HomePage() {
         } else if (val.score >= 85 && val.score <= 100) {
           overallRank[0] += 1;
         }
-        val.industry = MSIC.filter((item) => item.code === val.msic)[0].industryShort;
+        val.industry = MSIC.filter(
+          (item) => item.code === val.msic
+        )[0].industryShort;
         if (index === linked.length - 1) {
           setTimeout(() => {
             setSmeRank(linked.sort((a, b) => b.score - a.score).slice(0, 10));
@@ -285,15 +313,29 @@ function HomePage() {
                 Object.keys(industryObj).map((val, industryIndex) => {
                   industryRank.push({
                     industry: val,
-                    Env: Math.round(industryObj[val].env / industryObj[val].qty),
-                    Soc: Math.round(industryObj[val].soc / industryObj[val].qty),
-                    Gov: Math.round(industryObj[val].gov / industryObj[val].qty),
-                    Sus: Math.round(industryObj[val].sus / industryObj[val].qty),
-                    score: Math.round(industryObj[val].score / industryObj[val].qty),
-                    percentage: Math.round((industryObj[val].qty / linked.length) * 100),
+                    Env: Math.round(
+                      industryObj[val].env / industryObj[val].qty
+                    ),
+                    Soc: Math.round(
+                      industryObj[val].soc / industryObj[val].qty
+                    ),
+                    Gov: Math.round(
+                      industryObj[val].gov / industryObj[val].qty
+                    ),
+                    Sus: Math.round(
+                      industryObj[val].sus / industryObj[val].qty
+                    ),
+                    score: Math.round(
+                      industryObj[val].score / industryObj[val].qty
+                    ),
+                    percentage: Math.round(
+                      (industryObj[val].qty / linked.length) * 100
+                    ),
                   });
                   if (industryIndex === Object.keys(industryObj).length - 1) {
-                    setIndustryRank(industryRank.sort((a, b) => b.score - a.score).slice(0, 5));
+                    setIndustryRank(
+                      industryRank.sort((a, b) => b.score - a.score).slice(0, 5)
+                    );
                     if (industryRank.length > 5) {
                       setIndustryBottomRank(
                         industryRank
@@ -306,7 +348,13 @@ function HomePage() {
                 });
               }
             });
-            setSummary([envRank.indexOf(Math.max.apply(null, envRank)), socRank.indexOf(Math.max.apply(null, socRank)), govRank.indexOf(Math.max.apply(null, govRank)), susRank.indexOf(Math.max.apply(null, susRank)), overallRank.indexOf(Math.max.apply(null, overallRank))]);
+            setSummary([
+              envRank.indexOf(Math.max.apply(null, envRank)),
+              socRank.indexOf(Math.max.apply(null, socRank)),
+              govRank.indexOf(Math.max.apply(null, govRank)),
+              susRank.indexOf(Math.max.apply(null, susRank)),
+              overallRank.indexOf(Math.max.apply(null, overallRank)),
+            ]);
             envRank.map((val, index) => {
               envBreakdown.push(Math.round((val / linked.length) * 100));
               if (index === envRank.length - 1) {
@@ -367,7 +415,9 @@ function HomePage() {
           }
           APIHelpers.GET("v1/assessmentEntries?assessmentId=" + val1.id)
             .then((res) => {
-              let genQuestion = res.items.filter((item) => item.questionType === "DEMOGRAPHIC");
+              let genQuestion = res.items.filter(
+                (item) => item.questionType === "DEMOGRAPHIC"
+              );
               if (initial === true) {
                 genQuestion.map((gen, index) => {
                   gen.question.options.map((option, questionIndex) => {
@@ -435,7 +485,11 @@ function HomePage() {
     APIHelpers.GET("v1/smes?id=" + router.query.id)
       .then((res) => {
         let company = res.items[0];
-        company.industry = MSIC.filter((item) => item.code === company.msic)[0].industryShort + " (" + company.msic + ")";
+        company.industry =
+          MSIC.filter((item) => item.code === company.msic)[0].industryShort +
+          " (" +
+          company.msic +
+          ")";
         setCompany(company);
       })
       .catch(() => {});
@@ -445,9 +499,13 @@ function HomePage() {
     APIHelpers.GET("v1/smes")
       .then((res) => {
         if (res.items) {
-          let filter = res.items.filter((item) => item.id !== company.id && !linkedCompany.includes(item.id));
+          let filter = res.items.filter(
+            (item) => item.id !== company.id && !linkedCompany.includes(item.id)
+          );
           filter.map((val) => {
-            val.industry = MSIC.filter((item) => item.code === val.msic)[0].industry;
+            val.industry = MSIC.filter(
+              (item) => item.code === val.msic
+            )[0].industry;
           });
           setFullCompany(filter);
         }
@@ -456,7 +514,9 @@ function HomePage() {
   };
 
   const getReqConnections = () => {
-    APIHelpers.GET("v1/connections?requestCompanyID=" + company.id + "&status=ACTIVE")
+    APIHelpers.GET(
+      "v1/connections?requestCompanyID=" + company.id + "&status=ACTIVE"
+    )
       .then((res) => {
         setReqConnection(res.items);
       })
@@ -464,7 +524,9 @@ function HomePage() {
   };
 
   const getRecConnections = () => {
-    APIHelpers.GET("v1/connections?receivedCompanyID=" + company.id + "&status=ACTIVE")
+    APIHelpers.GET(
+      "v1/connections?receivedCompanyID=" + company.id + "&status=ACTIVE"
+    )
       .then((res) => {
         setRecConnection(res.items);
       })
@@ -476,16 +538,27 @@ function HomePage() {
       .then((res) => {
         let complete = [];
         if (year === "") {
-          complete = res.items.filter((item) => linkedCompanyId.includes(item.smeID) && item.completionDate !== "0001-01-01T00:00:00Z");
+          complete = res.items.filter(
+            (item) =>
+              linkedCompanyId.includes(item.smeID) &&
+              item.completionDate !== "0001-01-01T00:00:00Z"
+          );
         } else {
-          complete = res.items.filter((item) => linkedCompanyId.includes(item.smeID) && item.completionDate !== "0001-01-01T00:00:00Z" && new Date(item.completionDate) <= new Date(year));
+          complete = res.items.filter(
+            (item) =>
+              linkedCompanyId.includes(item.smeID) &&
+              item.completionDate !== "0001-01-01T00:00:00Z" &&
+              new Date(item.completionDate) <= new Date(year)
+          );
         }
         // let complete = res.items.filter((item) => linkedCompanyId.includes(item.smeID) && item.completionDate !== "0001-01-01T00:00:00Z");
         // if (complete.length > 0) {
         //   setPortfolioDataReady(portfolioDataReady + 1);
         //   setPortfolioData(complete);
         // }
-        complete = complete.sort((a, b) => new Date(b.completionDate) - new Date(a.completionDate));
+        complete = complete.sort(
+          (a, b) => new Date(b.completionDate) - new Date(a.completionDate)
+        );
         complete.map((val, index) => {
           APIHelpers.GET("v1/assessmentEntries?assessmentId=" + val.id)
             .then((res) => {
@@ -493,14 +566,31 @@ function HomePage() {
                 .then((res) => {
                   let date = new Date(val.completionDate);
                   val.oriDate = date;
-                  val.formatCompletionDate = ("0" + date.getDate()).slice(-2) + "/" + ("0" + (date.getMonth() + 1)).slice(-2) + "/" + date.getFullYear();
-                  let validStart = ("0" + date.getDate()).slice(-2) + "/" + ("0" + (date.getMonth() + 1)).slice(-2) + "/" + date.getFullYear();
+                  val.formatCompletionDate =
+                    ("0" + date.getDate()).slice(-2) +
+                    "/" +
+                    ("0" + (date.getMonth() + 1)).slice(-2) +
+                    "/" +
+                    date.getFullYear();
+                  let validStart =
+                    ("0" + date.getDate()).slice(-2) +
+                    "/" +
+                    ("0" + (date.getMonth() + 1)).slice(-2) +
+                    "/" +
+                    date.getFullYear();
                   let validEnd = date;
                   validEnd.setDate(validEnd.getDate() - 1);
                   validEnd.setFullYear(validEnd.getFullYear() + 1);
-                  validEnd = ("0" + validEnd.getDate()).slice(-2) + "/" + ("0" + (validEnd.getMonth() + 1)).slice(-2) + "/" + validEnd.getFullYear();
+                  validEnd =
+                    ("0" + validEnd.getDate()).slice(-2) +
+                    "/" +
+                    ("0" + (validEnd.getMonth() + 1)).slice(-2) +
+                    "/" +
+                    validEnd.getFullYear();
                   val.validityDate = validStart + " - " + validEnd;
-                  let smeCompany = fullCompany.filter((item) => item.id === val.smeID)[0];
+                  let smeCompany = fullCompany.filter(
+                    (item) => item.id === val.smeID
+                  )[0];
                   val.companyName = smeCompany.companyName;
                   val.state = smeCompany.state;
                   val.msic = smeCompany.msic;
@@ -513,8 +603,14 @@ function HomePage() {
                   val.score = Math.round(res.overall);
                   val.shared = false;
                   if (val.sharedWiths !== null) {
-                    if (val.sharedWiths.filter((item) => item.corporateID === company.id).length > 0) {
-                      let status = val.sharedWiths.filter((item) => item.corporateID === company.id)[0].status;
+                    if (
+                      val.sharedWiths.filter(
+                        (item) => item.corporateID === company.id
+                      ).length > 0
+                    ) {
+                      let status = val.sharedWiths.filter(
+                        (item) => item.corporateID === company.id
+                      )[0].status;
                       if (status === "ACTIVE") {
                         val.shared = true;
                       }
@@ -542,7 +638,9 @@ function HomePage() {
     <Row className="mt-8 min-h-8/10 w-full">
       <Row className="w-full flex justify-between">
         <div className="flex flex-col">
-          <p className="text-darkGreen font-bold text-4xl">ESG Portfolio Report</p>
+          <p className="text-darkGreen font-bold text-4xl">
+            ESG Portfolio Report
+          </p>
         </div>
         <img src={SmeLogo.src} width={300} />
       </Row>
@@ -554,38 +652,63 @@ function HomePage() {
             </Col>
             <Col>
               <p className="text-3xl font-bold mt-4">
-                {allPortfolioScore.score + "%"}&emsp;{getESGLevel(allPortfolioScore.score)}
+                {allPortfolioScore.score + "%"}&emsp;
+                {getESGLevel(allPortfolioScore.score)}
               </p>
             </Col>
           </Row>
           <Row className="w-full mt-4">
-            <p className="w-2/5">Company</p>:<p className="w-2/4 break-words ml-2">{Object.keys(company).length > 0 ? company.companyName : ""}</p>
+            <p className="w-2/5">Company</p>:
+            <p className="w-2/4 break-words ml-2">
+              {Object.keys(company).length > 0 ? company.companyName : ""}
+            </p>
           </Row>
           <Row className="w-full mt-2">
-            <p className="w-2/5">Industry</p>:<p className="w-2/4 break-words ml-2">{Object.keys(company).length > 0 ? company.industry : ""}</p>
+            <p className="w-2/5">Industry</p>:
+            <p className="w-2/4 break-words ml-2">
+              {Object.keys(company).length > 0 ? company.industry : ""}
+            </p>
           </Row>
           <Row className="w-full mt-2">
-            <p className="w-2/5">Connection Size</p>:<p className="w-2/4 break-words ml-2">{linkedCompanyId.length + " connections"}</p>
+            <p className="w-2/5">Connection Size</p>:
+            <p className="w-2/4 break-words ml-2">
+              {linkedCompanyId.length + " connections"}
+            </p>
           </Row>
           <Row className="w-full mt-2">
-            <p className="w-2/5">Portfolio Size</p>:<p className="w-2/4 break-words ml-2">{allAggScoreLength + " reports"}</p>
+            <p className="w-2/5">Portfolio Size</p>:
+            <p className="w-2/4 break-words ml-2">
+              {allAggScoreLength + " reports"}
+            </p>
           </Row>
         </Col>
         <Col className="w-2/5 bg-darkTeal text-white text-lg px-4 py-2">
           <Row className="bg-white text-darkTeal px-8 py-5 -ml-8 border-darkTeal border-4 flex items-center justify-between">
             <p className="text-xl w-1/3">Environment</p>
-            <p className="text-2xl font-bold w-1/4 text-right">{allPortfolioScore.Env + "%"}</p>
-            <p className="text-2xl font-bold w-1/4 mr-4">{getESGLevel(allPortfolioScore.Env)}</p>
+            <p className="text-2xl font-bold w-1/4 text-right">
+              {allPortfolioScore.Env + "%"}
+            </p>
+            <p className="text-2xl font-bold w-1/4 mr-4">
+              {getESGLevel(allPortfolioScore.Env)}
+            </p>
           </Row>
           <Row className="bg-white text-darkTeal px-8 py-5 -ml-8 border-darkTeal border-4 flex items-center justify-between mt-2">
             <p className="text-xl w-1/3">Social</p>
-            <p className="text-2xl font-bold w-1/4 text-right">{allPortfolioScore.Soc + "%"}</p>
-            <p className="text-2xl font-bold w-1/4 mr-4">{getESGLevel(allPortfolioScore.Soc)}</p>
+            <p className="text-2xl font-bold w-1/4 text-right">
+              {allPortfolioScore.Soc + "%"}
+            </p>
+            <p className="text-2xl font-bold w-1/4 mr-4">
+              {getESGLevel(allPortfolioScore.Soc)}
+            </p>
           </Row>
           <Row className="bg-white text-darkTeal px-8 py-5 -ml-8 border-darkTeal border-4 flex items-center justify-between mt-2">
             <p className="text-xl w-1/3">Governance</p>
-            <p className="text-2xl font-bold w-1/4 text-right">{allPortfolioScore.Gov + "%"}</p>
-            <p className="text-2xl font-bold w-1/4 mr-4">{getESGLevel(allPortfolioScore.Gov)}</p>
+            <p className="text-2xl font-bold w-1/4 text-right">
+              {allPortfolioScore.Gov + "%"}
+            </p>
+            <p className="text-2xl font-bold w-1/4 mr-4">
+              {getESGLevel(allPortfolioScore.Gov)}
+            </p>
           </Row>
           <Row className="bg-white text-darkTeal px-8 py-2 -ml-8 border-darkTeal border-4 flex items-center justify-between mt-2">
             <p className="text-xl w-1/3">
@@ -593,8 +716,12 @@ function HomePage() {
               <br />
               Procurement
             </p>
-            <p className="text-2xl font-bold w-1/4 text-right">{allPortfolioScore.Sus + "%"}</p>
-            <p className="text-2xl font-bold w-1/4 mr-4">{getESGLevel(allPortfolioScore.Sus)}</p>
+            <p className="text-2xl font-bold w-1/4 text-right">
+              {allPortfolioScore.Sus + "%"}
+            </p>
+            <p className="text-2xl font-bold w-1/4 mr-4">
+              {getESGLevel(allPortfolioScore.Sus)}
+            </p>
           </Row>
         </Col>
       </Row>
@@ -610,44 +737,104 @@ function HomePage() {
         <p className="w-[10%] bg-[#4CB4B2]">Beginner</p>
       </Row>
       <Row className="w-full flex justify-center text-lg text-white mt-2 gap-x-1">
-        <p className="w-[20%] text-darkGreen font-semibold text-right mr-2">Environmental</p>
-        <p className="w-[10%] bg-[#004B53] justify-center flex items-center">{envRank[0]}%</p>
-        <p className="w-[10%] bg-[#00717D] justify-center flex items-center">{envRank[1]}%</p>
-        <p className="w-[10%] bg-[#1B786E] justify-center flex items-center">{envRank[2]}%</p>
-        <p className="w-[10%] bg-[#3D8F8F] justify-center flex items-center">{envRank[3]}%</p>
-        <p className="w-[10%] bg-[#4CB4B2] justify-center flex items-center">{envRank[4]}%</p>
+        <p className="w-[20%] text-darkGreen font-semibold text-right mr-2">
+          Environmental
+        </p>
+        <p className="w-[10%] bg-[#004B53] justify-center flex items-center">
+          {envRank[0]}%
+        </p>
+        <p className="w-[10%] bg-[#00717D] justify-center flex items-center">
+          {envRank[1]}%
+        </p>
+        <p className="w-[10%] bg-[#1B786E] justify-center flex items-center">
+          {envRank[2]}%
+        </p>
+        <p className="w-[10%] bg-[#3D8F8F] justify-center flex items-center">
+          {envRank[3]}%
+        </p>
+        <p className="w-[10%] bg-[#4CB4B2] justify-center flex items-center">
+          {envRank[4]}%
+        </p>
       </Row>
       <Row className="w-full flex justify-center text-lg text-white mt-2 gap-x-1">
-        <p className="w-[20%] text-darkGreen font-semibold text-right mr-2">Social</p>
-        <p className="w-[10%] bg-[#004B53] justify-center flex items-center">{socRank[0]}%</p>
-        <p className="w-[10%] bg-[#00717D] justify-center flex items-center">{socRank[1]}%</p>
-        <p className="w-[10%] bg-[#1B786E] justify-center flex items-center">{socRank[2]}%</p>
-        <p className="w-[10%] bg-[#3D8F8F] justify-center flex items-center">{socRank[3]}%</p>
-        <p className="w-[10%] bg-[#4CB4B2] justify-center flex items-center">{socRank[4]}%</p>
+        <p className="w-[20%] text-darkGreen font-semibold text-right mr-2">
+          Social
+        </p>
+        <p className="w-[10%] bg-[#004B53] justify-center flex items-center">
+          {socRank[0]}%
+        </p>
+        <p className="w-[10%] bg-[#00717D] justify-center flex items-center">
+          {socRank[1]}%
+        </p>
+        <p className="w-[10%] bg-[#1B786E] justify-center flex items-center">
+          {socRank[2]}%
+        </p>
+        <p className="w-[10%] bg-[#3D8F8F] justify-center flex items-center">
+          {socRank[3]}%
+        </p>
+        <p className="w-[10%] bg-[#4CB4B2] justify-center flex items-center">
+          {socRank[4]}%
+        </p>
       </Row>
       <Row className="w-full flex justify-center text-lg text-white mt-2 gap-x-1">
-        <p className="w-[20%] text-darkGreen font-semibold text-right mr-2">Governance</p>
-        <p className="w-[10%] bg-[#004B53] justify-center flex items-center">{govRank[0]}%</p>
-        <p className="w-[10%] bg-[#00717D] justify-center flex items-center">{govRank[1]}%</p>
-        <p className="w-[10%] bg-[#1B786E] justify-center flex items-center">{govRank[2]}%</p>
-        <p className="w-[10%] bg-[#3D8F8F] justify-center flex items-center">{govRank[3]}%</p>
-        <p className="w-[10%] bg-[#4CB4B2] justify-center flex items-center">{govRank[4]}%</p>
+        <p className="w-[20%] text-darkGreen font-semibold text-right mr-2">
+          Governance
+        </p>
+        <p className="w-[10%] bg-[#004B53] justify-center flex items-center">
+          {govRank[0]}%
+        </p>
+        <p className="w-[10%] bg-[#00717D] justify-center flex items-center">
+          {govRank[1]}%
+        </p>
+        <p className="w-[10%] bg-[#1B786E] justify-center flex items-center">
+          {govRank[2]}%
+        </p>
+        <p className="w-[10%] bg-[#3D8F8F] justify-center flex items-center">
+          {govRank[3]}%
+        </p>
+        <p className="w-[10%] bg-[#4CB4B2] justify-center flex items-center">
+          {govRank[4]}%
+        </p>
       </Row>
       <Row className="w-full flex justify-center text-lg text-white mt-2 gap-x-1">
-        <p className="w-[20%] text-darkGreen font-semibold text-right mr-2">Sustainable Procurement</p>
-        <p className="w-[10%] bg-[#004B53] justify-center flex items-center">{susRank[0]}%</p>
-        <p className="w-[10%] bg-[#00717D] justify-center flex items-center">{susRank[1]}%</p>
-        <p className="w-[10%] bg-[#1B786E] justify-center flex items-center">{susRank[2]}%</p>
-        <p className="w-[10%] bg-[#3D8F8F] justify-center flex items-center">{susRank[3]}%</p>
-        <p className="w-[10%] bg-[#4CB4B2] justify-center flex items-center">{susRank[4]}%</p>
+        <p className="w-[20%] text-darkGreen font-semibold text-right mr-2">
+          Sustainable Procurement
+        </p>
+        <p className="w-[10%] bg-[#004B53] justify-center flex items-center">
+          {susRank[0]}%
+        </p>
+        <p className="w-[10%] bg-[#00717D] justify-center flex items-center">
+          {susRank[1]}%
+        </p>
+        <p className="w-[10%] bg-[#1B786E] justify-center flex items-center">
+          {susRank[2]}%
+        </p>
+        <p className="w-[10%] bg-[#3D8F8F] justify-center flex items-center">
+          {susRank[3]}%
+        </p>
+        <p className="w-[10%] bg-[#4CB4B2] justify-center flex items-center">
+          {susRank[4]}%
+        </p>
       </Row>
       <Row className="w-full flex justify-center text-lg text-white mt-2 gap-x-1">
-        <p className="w-[20%] text-darkGreen font-semibold text-right mr-2">Overall</p>
-        <p className="w-[10%] bg-[#004B53] justify-center flex items-center">{overallRank[0]}%</p>
-        <p className="w-[10%] bg-[#00717D] justify-center flex items-center">{overallRank[1]}%</p>
-        <p className="w-[10%] bg-[#1B786E] justify-center flex items-center">{overallRank[2]}%</p>
-        <p className="w-[10%] bg-[#3D8F8F] justify-center flex items-center">{overallRank[3]}%</p>
-        <p className="w-[10%] bg-[#4CB4B2] justify-center flex items-center">{overallRank[4]}%</p>
+        <p className="w-[20%] text-darkGreen font-semibold text-right mr-2">
+          Overall
+        </p>
+        <p className="w-[10%] bg-[#004B53] justify-center flex items-center">
+          {overallRank[0]}%
+        </p>
+        <p className="w-[10%] bg-[#00717D] justify-center flex items-center">
+          {overallRank[1]}%
+        </p>
+        <p className="w-[10%] bg-[#1B786E] justify-center flex items-center">
+          {overallRank[2]}%
+        </p>
+        <p className="w-[10%] bg-[#3D8F8F] justify-center flex items-center">
+          {overallRank[3]}%
+        </p>
+        <p className="w-[10%] bg-[#4CB4B2] justify-center flex items-center">
+          {overallRank[4]}%
+        </p>
       </Row>
       <Row className="w-full mt-8">
         <Col className="w-1/3 flex flex-col items-center">
@@ -659,7 +846,10 @@ function HomePage() {
           {portfolioDonutChartTemp(portfolioBranches, 250, COLORS)}
           <div className="flex flex-col">
             {portfolioBranches.map((val, index) => (
-              <Badge color={COLORS[index]} text={<span className="my-1">{val.name}</span>}></Badge>
+              <Badge
+                color={COLORS[index]}
+                text={<span className="my-1">{val.name}</span>}
+              ></Badge>
             ))}
           </div>
         </Col>
@@ -672,7 +862,10 @@ function HomePage() {
           {portfolioDonutChartTemp(portfolioRevenue, 250, SIXCOLORS)}
           <div className="flex flex-col">
             {portfolioRevenue.map((val, index) => (
-              <Badge color={SIXCOLORS[index]} text={<span className="my-1">{val.name}</span>}></Badge>
+              <Badge
+                color={SIXCOLORS[index]}
+                text={<span className="my-1">{val.name}</span>}
+              ></Badge>
             ))}
           </div>
         </Col>
@@ -685,7 +878,10 @@ function HomePage() {
           {portfolioDonutChartTemp(portfolioSize, 250, COLORS)}
           <div className="flex flex-col">
             {portfolioSize.map((val, index) => (
-              <Badge color={COLORS[index]} text={<span className="my-1">{val.name}</span>}></Badge>
+              <Badge
+                color={COLORS[index]}
+                text={<span className="my-1">{val.name}</span>}
+              ></Badge>
             ))}
           </div>
         </Col>
@@ -693,8 +889,20 @@ function HomePage() {
       <Row className="mt-12 flex justify-between w-full h-[600px]">
         <Col className="w-[49%]">
           {/* <p className="text-darkGreen font-semibold text-lg">Top 5 Industries</p> */}
-          <Table className="csiTable portfolioTable w-full" dataSource={[...industryRank]} pagination={false} rowClassName={(row, index) => (index % 2 === 0 ? "bg-white" : "bg-gray-100")}>
-            <Column title="Top 5 Industries" dataIndex="industry" width={250} render={(row) => <p className="text-darkGreen">{row}</p>} />
+          <Table
+            className="csiTable portfolioTable w-full"
+            dataSource={[...industryRank]}
+            pagination={false}
+            rowClassName={(row, index) =>
+              index % 2 === 0 ? "bg-white" : "bg-gray-100"
+            }
+          >
+            <Column
+              title="Top 5 Industries"
+              dataIndex="industry"
+              width={250}
+              render={(row) => <p className="text-darkGreen">{row}</p>}
+            />
             <Column
               title="ESG Maturity Level"
               render={(row) => {
@@ -716,8 +924,20 @@ function HomePage() {
         <Col className="w-[49%]">
           {/* <p className="text-darkGreen font-semibold text-lg">Bottom 5 Industries</p> */}
           {industryBottomRank.length > 0 ? (
-            <Table className="csiTable portfolioTable w-full" dataSource={[...industryBottomRank]} pagination={false} rowClassName={(row, index) => (index % 2 === 0 ? "bg-white" : "bg-gray-100")}>
-              <Column title="Bottom 5 Industries" dataIndex="industry" width={250} render={(row) => <p className="text-darkGreen">{row}</p>} />
+            <Table
+              className="csiTable portfolioTable w-full"
+              dataSource={[...industryBottomRank]}
+              pagination={false}
+              rowClassName={(row, index) =>
+                index % 2 === 0 ? "bg-white" : "bg-gray-100"
+              }
+            >
+              <Column
+                title="Bottom 5 Industries"
+                dataIndex="industry"
+                width={250}
+                render={(row) => <p className="text-darkGreen">{row}</p>}
+              />
               <Column
                 title="ESG Maturity Level"
                 render={(row) => {
@@ -731,7 +951,9 @@ function HomePage() {
               <Column
                 title="Company Percentage"
                 render={(row) => {
-                  return <p className="text-darkGreen">{row.percentage + "%"}</p>;
+                  return (
+                    <p className="text-darkGreen">{row.percentage + "%"}</p>
+                  );
                 }}
               />
             </Table>
@@ -746,8 +968,20 @@ function HomePage() {
       <div className="w-full h-1500px">
         <Row className="w-full flex justify-between">
           <Col className="w-[49%]">
-            <Table className="csiTable portfolioTable w-full" dataSource={[...smeRank]} pagination={false} rowClassName={(row, index) => (index % 2 === 0 ? "bg-white" : "bg-gray-100")}>
-              <Column title="Top 10 Companies" dataIndex="companyName" width={350} render={(row) => <p className="text-darkGreen">{row}</p>} />
+            <Table
+              className="csiTable portfolioTable w-full"
+              dataSource={[...smeRank]}
+              pagination={false}
+              rowClassName={(row, index) =>
+                index % 2 === 0 ? "bg-white" : "bg-gray-100"
+              }
+            >
+              <Column
+                title="Top 10 Companies"
+                dataIndex="companyName"
+                width={350}
+                render={(row) => <p className="text-darkGreen">{row}</p>}
+              />
               <Column
                 title="ESG Maturity Level"
                 render={(row) => {
@@ -762,8 +996,20 @@ function HomePage() {
           </Col>
           <Col className="w-[49%]">
             {smeBottomRank.length > 0 ? (
-              <Table className="csiTable portfolioTable w-full" dataSource={[...smeBottomRank]} pagination={false} rowClassName={(row, index) => (index % 2 === 0 ? "bg-white" : "bg-gray-100")}>
-                <Column title="Bottom 10 Companies" dataIndex="companyName" width={350} render={(row) => <p className="text-darkGreen">{row}</p>} />
+              <Table
+                className="csiTable portfolioTable w-full"
+                dataSource={[...smeBottomRank]}
+                pagination={false}
+                rowClassName={(row, index) =>
+                  index % 2 === 0 ? "bg-white" : "bg-gray-100"
+                }
+              >
+                <Column
+                  title="Bottom 10 Companies"
+                  dataIndex="companyName"
+                  width={350}
+                  render={(row) => <p className="text-darkGreen">{row}</p>}
+                />
                 <Column
                   title="ESG Maturity Level"
                   render={(row) => {
@@ -785,37 +1031,73 @@ function HomePage() {
           <Col className="w-[24.5%] bg-darkTeal rounded-tr-3xl rounded-bl-3xl px-4 py-8 text-white">
             <p className="mb-4 font-semibold">Environmental</p>
             <p>
-              For the Environmental Dimension, {envRank[summary[0]]}% of your portfolio is in the {SCORELEVEL[summary[0]]} level which brings up the overall score to {allPortfolioScore.Env + "% (" + getESGLevel(allPortfolioScore.Env) + ")"}.
+              For the Environmental Dimension, {envRank[summary[0]]}% of your
+              portfolio is in the {SCORELEVEL[summary[0]]} level which brings up
+              the overall score to{" "}
+              {allPortfolioScore.Env +
+                "% (" +
+                getESGLevel(allPortfolioScore.Env) +
+                ")"}
+              .
             </p>
           </Col>
           <Col className="w-[24.5%] bg-darkTeal rounded-tl-3xl rounded-br-3xl px-4 py-8 text-white">
             <p className="mb-4 font-semibold">Social</p>
             <p>
-              For the Social Dimension, {socRank[summary[1]]}% of your portfolio is in the {SCORELEVEL[summary[1]]} level which brings down the overall score to {allPortfolioScore.Soc + "% (" + getESGLevel(allPortfolioScore.Soc) + ")"}.
+              For the Social Dimension, {socRank[summary[1]]}% of your portfolio
+              is in the {SCORELEVEL[summary[1]]} level which brings down the
+              overall score to{" "}
+              {allPortfolioScore.Soc +
+                "% (" +
+                getESGLevel(allPortfolioScore.Soc) +
+                ")"}
+              .
             </p>
           </Col>
           <Col className="w-[24.5%] bg-darkTeal rounded-tr-3xl rounded-bl-3xl px-4 py-8 text-white">
             <p className="mb-4 font-semibold">Governance</p>
             <p>
-              For the Governance Dimension, {govRank[summary[2]]}% of your portfolio is in the {SCORELEVEL[summary[2]]} level which brings down the overall score to {allPortfolioScore.Gov + "% (" + getESGLevel(allPortfolioScore.Gov) + ")"}.
+              For the Governance Dimension, {govRank[summary[2]]}% of your
+              portfolio is in the {SCORELEVEL[summary[2]]} level which brings
+              down the overall score to{" "}
+              {allPortfolioScore.Gov +
+                "% (" +
+                getESGLevel(allPortfolioScore.Gov) +
+                ")"}
+              .
             </p>
           </Col>
           <Col className="w-[24.5%] bg-darkTeal rounded-tl-3xl rounded-br-3xl px-4 py-8 text-white">
             <p className="mb-4 font-semibold">Sustainable Procurement</p>
             <p>
-              For the Sustainable Procurement Dimension, {susRank[summary[3]]}% of your portfolio is in the {SCORELEVEL[summary[3]]} level which brings down the overall score to {allPortfolioScore.Sus + "% (" + getESGLevel(allPortfolioScore.Sus) + ")"}.
+              For the Sustainable Procurement Dimension, {susRank[summary[3]]}%
+              of your portfolio is in the {SCORELEVEL[summary[3]]} level which
+              brings down the overall score to{" "}
+              {allPortfolioScore.Sus +
+                "% (" +
+                getESGLevel(allPortfolioScore.Sus) +
+                ")"}
+              .
             </p>
           </Col>
         </Row>
         <Row className="mt-2 w-full">
           <Col className="w-full bg-darkTeal rounded-tl-3xl rounded-br-3xl px-4 py-8 text-white">
             <p>
-              Overall, you have a Portfolio ESG Maturity Score of {allPortfolioScore.score + "% (" + getESGLevel(allPortfolioScore.score) + ")"} considering that majority of the connected companies in your portfolio are at the {SCORELEVEL[summary[4]]} level.
+              Overall, you have a Portfolio ESG Maturity Score of{" "}
+              {allPortfolioScore.score +
+                "% (" +
+                getESGLevel(allPortfolioScore.score) +
+                ")"}{" "}
+              considering that majority of the connected companies in your
+              portfolio are at the {SCORELEVEL[summary[4]]} level.
             </p>
           </Col>
         </Row>
         <Row className="my-8">
-          <p className="text-darkGreen text-lg font-semibold">Company By States</p>
+          <p className="text-darkGreen text-lg font-semibold">
+            Company By States
+          </p>
           {portfolioColumnChartTemp(stateRank, allAggScoreLength, 1000, false)}
         </Row>
       </div>
@@ -825,9 +1107,19 @@ function HomePage() {
       <Divider className="border-black my-0" />
       <Row>
         <p className="font-medium text-justify mt-2 text-darkGreen">
-          {footerYear} Centre For Sustainability Intelligence Sdn Bhd. CSI is not responsible for any errors of omissions, or for the results obtained from the use of this information. All information in this site is provided “as is ” with no guarantee of completeness, accuracy timeliness or of the results obtained from the use of this information and without warranty of any kind, express or
-          implied, including, but not limited to warranties of performance, merchantability and fitness for a particular purpose. In no event will CSI, its related partnerships and corporations, or the directors, agents or employees thereof be liable to you or anyone else for any decision made or action taken in reliance on the information in this Report or any consequential, special or similar
-          damages, even if advised or possibilities of such damages.
+          © {footerYear} Centre For Sustainability Intelligence Sdn Bhd. CSI is
+          not responsible for any errors of omissions, or for the results
+          obtained from the use of this information. All information in this
+          site is provided “as is ” with no guarantee of completeness, accuracy
+          timeliness or of the results obtained from the use of this information
+          and without warranty of any kind, express or implied, including, but
+          not limited to warranties of performance, merchantability and fitness
+          for a particular purpose. In no event will CSI, its related
+          partnerships and corporations, or the directors, agents or employees
+          thereof be liable to you or anyone else for any decision made or
+          action taken in reliance on the information in this Report or any
+          consequential, special or similar damages, even if advised or
+          possibilities of such damages.
         </p>
       </Row>
     </Row>
